@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<TitledPane animated="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="587.0" prefWidth="849.0" text="Laskut" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <content>
+      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+         <children>
+            <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="Takaisin" />
+            <Button layoutX="79.0" layoutY="14.0" mnemonicParsing="false" text="Koti" />
+            <Button layoutX="50.0" layoutY="98.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="151.0" text="Uusi lasku" />
+            <Button layoutX="50.0" layoutY="179.0" mnemonicParsing="false" prefHeight="74.0" prefWidth="152.0" text="Muokka ja poista laskuja" />
+            <Text layoutX="342.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Menneet laskut" />
+            <Text layoutX="578.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Erääntyvät laskut" />
+            <TextArea layoutX="324.0" layoutY="79.0" prefHeight="52.0" prefWidth="194.0" text="Laskun 1 tietoja" />
+            <TextArea layoutX="324.0" layoutY="153.0" prefHeight="52.0" prefWidth="194.0" text="Laskun 2 tietoja" />
+            <TextArea layoutX="324.0" layoutY="227.0" prefHeight="52.0" prefWidth="194.0" text="Laskun 3 tietoja" />
+            <TextArea layoutX="324.0" layoutY="304.0" prefHeight="52.0" prefWidth="194.0" text="Laskun 4 tietoja" />
+            <TextArea layoutX="324.0" layoutY="381.0" prefHeight="52.0" prefWidth="194.0" text="Laskun 5 tietoja" />
+            <TextArea layoutX="578.0" layoutY="79.0" prefHeight="52.0" prefWidth="194.0" text="Laskun 1 tietoja" />
+            <TextArea layoutX="578.0" layoutY="153.0" prefHeight="52.0" prefWidth="194.0" text="Laskun 2 tietoja" />
+            <TextArea layoutX="578.0" layoutY="227.0" prefHeight="52.0" prefWidth="194.0" text="Laskun 3 tietoja" />
+            <TextArea layoutX="578.0" layoutY="304.0" prefHeight="52.0" prefWidth="194.0" text="Laskun 4 tietoja" />
+            <TextArea layoutX="578.0" layoutY="381.0" prefHeight="52.0" prefWidth="194.0" text="Laskun 5 tietoja" />
+         </children>
+      </AnchorPane>
+   </content>
+</TitledPane>
