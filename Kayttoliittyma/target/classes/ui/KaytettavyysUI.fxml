@@ -3,19 +3,18 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-   <AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <VBox layoutX="92.0" layoutY="14.0" prefHeight="600.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <TextArea prefHeight="197.0" prefWidth="800.0" text="Tulevat varaukset:" />
-            <TextArea prefHeight="200.0" prefWidth="200.0" />
-            <TextArea prefHeight="199.0" prefWidth="800.0" text="Menneet varaukset:&#10;" />
-            <TextArea prefHeight="200.0" prefWidth="200.0" />
+            <TextArea editable="false" prefHeight="197.0" prefWidth="800.0" text="Tulevat varaukset:" />
+            <TextArea editable="false" prefHeight="200.0" prefWidth="200.0" />
+            <TextArea editable="false" prefHeight="199.0" prefWidth="800.0" text="Menneet varaukset:&#10;" />
+            <TextArea editable="false" prefHeight="200.0" prefWidth="200.0" />
             <HBox prefHeight="159.0" prefWidth="800.0">
                <children>
-                  <TextArea prefHeight="70.0" prefWidth="200.0" text="Varausten määrä:&#10;" />
-                  <TextArea prefHeight="200.0" prefWidth="200.0" />
+                  <TextArea editable="false" prefHeight="70.0" prefWidth="200.0" text="Varausten määrä:&#10;" />
+                  <TextArea editable="false" prefHeight="200.0" prefWidth="200.0" />
                </children>
             </HBox>
          </children>

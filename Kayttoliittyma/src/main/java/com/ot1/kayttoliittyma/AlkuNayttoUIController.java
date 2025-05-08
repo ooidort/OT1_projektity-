@@ -30,7 +30,6 @@ public class AlkuNayttoUIController {
             uusiIkkuna.setTitle("Mökkien hallinta");
             uusiIkkuna.show();
 
-
         } catch (IOException e) {
             e.printStackTrace();
         }
