@@ -5,10 +5,11 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.stage.*?>
 
-<Stage xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1">
-    <scene>
-        <Scene>
-            <AnchorPane prefHeight="600.0" prefWidth="800.0">
+
+<Stage xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.main.java.com.ot1.kayttoliittyma.MokkienHallintaUIController">
+    <scene >
+        <Scene >
+            <AnchorPane prefHeight="600.0" prefWidth="800.0"  >
             <children>
                <GridPane layoutX="23.0" layoutY="210.0" prefHeight="810.0" prefWidth="823.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                  <columnConstraints>
@@ -35,7 +36,7 @@
                            <TextArea prefHeight="555.0" prefWidth="200.0" text="Mökki ei varattavissa:" />
                            <HBox prefHeight="0.0" prefWidth="200.0">
                               <children>
-                                 <Button mnemonicParsing="false" prefHeight="0.0" prefWidth="116.0" text="Näytä varaustiedot" />
+                                 <Button mnemonicParsing="false" prefHeight="0.0" prefWidth="116.0" text="Näytä varaustiedot" onAction="#naytaVaraustiedot"/>
                               </children>
                            </HBox>
                         </children>
@@ -46,10 +47,10 @@
                            <TextArea prefHeight="200.0" prefWidth="200.0" text="Suunnitellut huollot:" />
                            <TextArea prefHeight="200.0" prefWidth="200.0" text="Käynnissä olevat huollot:" />
                            <TextArea prefHeight="150.0" prefWidth="200.0" text="Aikataulutetut huollot:" />
-                           <HBox prefHeight="32.0" prefWidth="200.0">
+                           <HBox prefHeight="32.0" prefWidth="200.0" >
                               <children>
-                                 <Button mnemonicParsing="false" text="Lisää huolto" />
-                                 <Button mnemonicParsing="false" text="Poista huolto" />
+                                 <Button mnemonicParsing="false" text="Lisää huolto" onAction="#lisaaHuolto"/>
+                                 <Button mnemonicParsing="false" text="Poista huolto" onAction="#poistaHuolto" />
                               </children>
                            </HBox>
                         </children>
