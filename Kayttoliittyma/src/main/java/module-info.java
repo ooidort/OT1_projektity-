@@ -1,6 +1,7 @@
 module com.ot1.kayttoliittyma {
     requires javafx.controls;
     requires javafx.fxml;
+    requires java.desktop;
 
 
     opens com.ot1.kayttoliittyma to javafx.fxml;
