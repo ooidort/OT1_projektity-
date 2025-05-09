@@ -1,4 +1,4 @@
-package src.main.java.com.ot1.kayttoliittyma;
+package com.ot1.kayttoliittyma;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
