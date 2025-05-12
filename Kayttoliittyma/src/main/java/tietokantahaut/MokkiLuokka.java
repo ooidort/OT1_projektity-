@@ -49,7 +49,7 @@ public class MokkiLuokka {
      * Palauttaa mökin osoitteen
      * @return
      */
-    public int getOsoite() {
+    public String getOsoite() {
         return osoite;
     }
 
@@ -97,7 +97,7 @@ public class MokkiLuokka {
      * Asettaa mökille osoitteen
      * @param osoite
      */
-    public void setOsoite(int osoite) {
+    public void setOsoite(String osoite) {
         this.osoite = osoite;
     }
 
