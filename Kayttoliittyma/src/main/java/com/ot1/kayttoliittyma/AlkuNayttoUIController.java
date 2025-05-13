@@ -38,7 +38,21 @@ public class AlkuNayttoUIController {
     }
 
     public void majoitusvarauksetButton(ActionEvent actionEvent) {
-        System.out.println("Klikkasit majoitusvarausnäppäintä!");
+        try{
+            System.out.println("Klikkasit majoitusvarausnäppäintä!");
+            FXMLLoader fxmlLoader = new FXMLLoader
+                    (getClass().getResource("/ui/MajoitusvarausUI.fxml"));
+            Parent root = fxmlLoader.load();
+            Stage varausIkkuna = new Stage();
+            Scene majoitusVarauksetScene = new Scene(root);
+            varausIkkuna.setTitle("Majoitusvaraukset");
+            varausIkkuna.setScene(majoitusVarauksetScene);
+            varausIkkuna.show();
+
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
     public void asiakashallintaButton(ActionEvent actionEvent) {
