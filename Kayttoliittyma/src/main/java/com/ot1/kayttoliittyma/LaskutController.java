@@ -1,4 +1,4 @@
-package src.main.java.com.ot1.kayttoliittyma;
+package com.ot1.kayttoliittyma;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -141,7 +141,6 @@ public class LaskutController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
 
     }
 
