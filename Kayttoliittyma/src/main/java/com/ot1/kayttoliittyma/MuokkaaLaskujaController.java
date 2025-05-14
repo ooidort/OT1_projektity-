@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.stage.Stage;
@@ -13,20 +14,21 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.time.LocalDate;
 
-public class UusiLaskuController {
-
+public class MuokkaaLaskujaController {
     @FXML
-    private DatePicker laskuPaivamaaraDatePicker;
+    private DatePicker laskuPaivamaaraDatePickerM;
     @FXML
-    private DatePicker laskuErapaivaDatePicker;
+    private DatePicker laskuErapaivaDatePickerM;
     @FXML
-    private ChoiceBox <String> asiakasChoiceBox;
+    private ChoiceBox<String> asiakasChoiceBoxM;
     @FXML
-    private ChoiceBox <String >mokkiChoiceBox;
+    private ChoiceBox <String >mokkiChoiceBoxM;
     @FXML
-    private ChoiceBox <String> paivatChoiceBox;
+    private ChoiceBox <String> paivatChoiceBoxM;
     @FXML
-    private ChoiceBox <String> loppusiivousChoiceBox;
+    private ChoiceBox <String> loppusiivousChoiceBoxM;
+    @FXML
+    private Button poistaLaskubt;
 
     @FXML
     private void initialize() {
@@ -35,21 +37,18 @@ public class UusiLaskuController {
         ObservableList<String> paivatLista = FXCollections.observableArrayList("1", "2", "3");
         ObservableList<String> loppusiivousLista = FXCollections.observableArrayList("0", "1", "2");
 
-        asiakasChoiceBox.setValue("Asiakas 1");
-        asiakasChoiceBox.setItems(asiakasLista);
+        asiakasChoiceBoxM.setValue("Asiakas 1");
+        asiakasChoiceBoxM.setItems(asiakasLista);
 
-        mokkiChoiceBox.setValue("Mökki 1");
-        mokkiChoiceBox.setItems(mokkiLista);
+        mokkiChoiceBoxM.setValue("Mökki 1");
+        mokkiChoiceBoxM.setItems(mokkiLista);
 
-        paivatChoiceBox.setValue("1");
-        paivatChoiceBox.setItems(paivatLista);
+        paivatChoiceBoxM.setValue("1");
+        paivatChoiceBoxM.setItems(paivatLista);
 
-        loppusiivousChoiceBox.setValue("0");
-        paivatChoiceBox.setItems(loppusiivousLista);
+        loppusiivousChoiceBoxM.setValue("0");
+        paivatChoiceBoxM.setItems(loppusiivousLista);
     }
-
-
-
     //Toiminto koti-buttonille
     public void kotiButton(javafx.event.ActionEvent actionEvent) {
 
@@ -90,42 +89,40 @@ public class UusiLaskuController {
         }
 
     }
-
     //Päivämäärä datepicker toimimaan
     @FXML
     private void handleAloitusPaiva() {
-        LocalDate aloitusPaiva = laskuPaivamaaraDatePicker.getValue();
+        LocalDate aloitusPaiva = laskuPaivamaaraDatePickerM.getValue();
         System.out.println("Aloituspäivä: " + aloitusPaiva);
     }
-
     //Eräpäivä datepicker toimimaan
     @FXML
     private void handleEraPaiva() {
-        LocalDate eraPaiva = laskuErapaivaDatePicker.getValue();
+        LocalDate eraPaiva = laskuErapaivaDatePickerM.getValue();
         System.out.println("Eräpäivä: " + eraPaiva);
     }
     //Asiakas choiceBox toimimaan
     @FXML
     private void handleAsiakasCB() {
-        String valittuAsiakas = asiakasChoiceBox.getValue();
+        String valittuAsiakas = asiakasChoiceBoxM.getValue();
         System.out.println("Valittu asiakas: " + valittuAsiakas);
     }
     //Mökki choiceBox toimimaan
     @FXML
     private void handleMokkiCB() {
-        String valittuMokki = mokkiChoiceBox.getValue();
+        String valittuMokki = mokkiChoiceBoxM.getValue();
         System.out.println("Valittu mökki: " + valittuMokki);
     }
     //Majoitettujen päivien määrä toimimaan
     @FXML
     private void handlePaivatCB() {
-        String valitutPaivat = paivatChoiceBox.getValue();
+        String valitutPaivat = paivatChoiceBoxM.getValue();
         System.out.println("Päivien määrä: " + valitutPaivat);
     }
     //Loppusiivous choiceBox toimiaan
     @FXML
     private void handleLoppusiivousCB() {
-        String loppusiivous = loppusiivousChoiceBox.getValue();
+        String loppusiivous = loppusiivousChoiceBoxM.getValue();
         System.out.println("Loppusiivous: " + loppusiivous);
     }
     //Tallenna button toimimaan
@@ -133,5 +130,9 @@ public class UusiLaskuController {
     private void handleTallennaBt() {
         //Tallentaa tiedot tietokantaan
     }
-
+    //Poista lasku button toimimaan
+    @FXML
+    private void handlePoistaLaskuBt() {
+        //Poistaa laskun
+    }
 }
