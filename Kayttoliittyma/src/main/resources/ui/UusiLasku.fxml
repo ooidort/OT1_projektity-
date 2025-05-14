@@ -22,6 +22,6 @@
       <Text layoutX="126.0" layoutY="340.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Majoitettujen päivien määrä:"/>
       <Text layoutX="126.0" layoutY="394.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Loppusiivous:" />
       <ChoiceBox fx:id="loppusiivousChoiceBox" layoutX="298.0" layoutY="377.0" prefHeight="25.0" prefWidth="174.0" onAction="#handleLoppusiivousCB"/>
-      <Button fx:id="tallennaButton" layoutX="123.0" layoutY="457.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" text="Tallenna" />
+      <Button fx:id="tallennaButton" layoutX="123.0" layoutY="457.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" text="Tallenna" onAction="#handleTallennaBt"/>
    </children>
 </AnchorPane>

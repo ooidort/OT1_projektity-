@@ -126,5 +126,10 @@ public class UusiLaskuController {
         String loppusiivous = loppusiivousChoiceBox.getValue();
         System.out.println("Loppusiivous: " + loppusiivous);
     }
+    //Tallenna button toimimaan
+    @FXML
+    private void handleTallennaBt() {
+        //Tallentaa tiedot tietokantaan
+    }
 
 }
