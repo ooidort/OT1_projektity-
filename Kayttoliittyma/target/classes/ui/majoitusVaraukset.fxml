@@ -41,7 +41,7 @@
                 <DatePicker fx:id="loppupaivaDate1" />
                 <Label fx:id="lisatietoLabel1" prefHeight="17.0" prefWidth="167.0" text="Lisätietoja:" />
                 <TextField fx:id="lisatietoField1" text="lisätietoja" />
-                <Button fx:id="tallennavarausBt1" mnemonicParsing="false" onAction="#tallennaMuutos" text="Tallenna varaus" />
+                <Button fx:id="tallennavarausBt1" mnemonicParsing="false" onAction="#tallennaMuutos" text="Tallenna muutokset" />
                 <Button fx:id="peruutaBt1" mnemonicParsing="false" onAction="#peruutaMuutokset" text="Peruuta" />
                 <Button fx:id="poistavarausBt" mnemonicParsing="false" onAction="#poistaVaraus" text="Poista varaus" />
             </children>

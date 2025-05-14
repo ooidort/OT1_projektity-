@@ -155,7 +155,7 @@ public class majoitusController implements Initializable {
     void tallennaMuutos(ActionEvent event) {
         Alert tallennaVahvistus = new Alert(Alert.AlertType.CONFIRMATION);
         tallennaVahvistus.setTitle("Vahvista muutoksen tallennus");
-        tallennaVahvistus.setHeaderText("Haluatko varmasti tallentaa muutoksen?");
+        tallennaVahvistus.setHeaderText("Haluatko varmasti tallentaa muutokset?");
 
         // painikkeet
         ButtonType kyllaBt = new ButtonType("KYLLÄ");
