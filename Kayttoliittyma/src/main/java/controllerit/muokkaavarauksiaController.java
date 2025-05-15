@@ -12,6 +12,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -68,6 +69,14 @@ public class muokkaavarauksiaController implements Initializable {
     @FXML
     private Label uusiVaraus1;
 
+    private int parseMokkiID(String mokkiString) {
+        try {
+            return Integer.parseInt(mokkiString.replaceAll("\\D+", ""));
+        } catch (NumberFormatException e) {
+            return -1; // Virheellinen syöte
+        }
+    }
+
     @FXML
     void tyhjennaKentat() {
         // tekstikenttien tyhjennys
@@ -93,7 +102,6 @@ public class muokkaavarauksiaController implements Initializable {
             FXMLLoader fxmlLoader = new
                     FXMLLoader(getClass().getResource("/ui/AlkuNaytto.fxml"));
             Parent root = fxmlLoader.load();
-
 
             Stage uusiIkkuna = new Stage();
             Scene kotiButtonScene = new Scene(root);
@@ -152,24 +160,42 @@ public class muokkaavarauksiaController implements Initializable {
 
     @FXML
     void tallennaMuutos(ActionEvent event) {
-        Alert tallennaVahvistus = new Alert(Alert.AlertType.CONFIRMATION);
-        tallennaVahvistus.setTitle("Vahvista muutoksen tallennus");
-        tallennaVahvistus.setHeaderText("Haluatko varmasti tallentaa muutokset?");
+        try {
+            int asiakasID = Integer.parseInt(asiakasField1.getText());
+            int mokkiID = parseMokkiID(muokkaaChoice.getValue());
+            LocalDate alku = alkupaivaDate1.getValue();
+            LocalDate loppu = loppupaivaDate1.getValue();
+            String lisatiedot = lisatietoField1.getText();
 
-        // painikkeet
-        ButtonType kyllaBt = new ButtonType("KYLLÄ");
-        ButtonType eiBt = new ButtonType("EN", ButtonBar.ButtonData.CANCEL_CLOSE);
-        tallennaVahvistus.getButtonTypes().setAll(kyllaBt, eiBt);
+            // kenttien tarkastus
+            if (mokkiID == -1 || alku == null || loppu == null) {
+                syoteVaroitus("Tarkista kentät", "Jokin kenttä virheellinen");
+                return;
+            }
+            // tietokantaan tallennus
+            System.out.println("Tallennetaan muutos:");
+            System.out.println("Asiakas ID: " + asiakasID);
+            System.out.println("Mökki ID: " + mokkiID);
+            System.out.println("Alku: " + alku);
+            System.out.println("Loppu: " + loppu);
+            System.out.println("Lisätiedot: " + lisatiedot);
 
-        Optional<ButtonType> result = tallennaVahvistus.showAndWait();
-        if (result.isPresent() && result.get() == kyllaBt) {
-            System.out.println("Muutokset tallennettu!");
-            // lisää poiston logiikka tietokantaan
-        } else {
-            System.out.println("Tapahtuma peruttu.");
+            Alert tallennaVahvistus = new Alert(Alert.AlertType.INFORMATION);
+            tallennaVahvistus.setTitle("Tallennus onnistui");
+            tallennaVahvistus.setHeaderText(null);
+            tallennaVahvistus.setContentText("Muutokset tallennettu onnistuneesti.");
+            tallennaVahvistus.showAndWait();
+        }catch (NumberFormatException e){
+            syoteVaroitus("Virheellinen syöte", "Asiakas ID ei kelvollinen");
         }
     }
-
+    private void syoteVaroitus(String otsikko, String viesti) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(otsikko);
+        alert.setHeaderText(null);
+        alert.setContentText(viesti);
+        alert.showAndWait();
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // varaus choiceboxit

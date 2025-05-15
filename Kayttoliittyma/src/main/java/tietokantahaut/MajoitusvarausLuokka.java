@@ -1,117 +1,61 @@
 package tietokantahaut;
 
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 public class MajoitusvarausLuokka {
-    private int VarausID;
-    private int AsiakasID;
-    private int MokkiID;
-    private Timestamp varauksenAlku;
-    private Timestamp varauksenLoppu;
+    private int mokkiID;
+    private int asiakasID;
+    private LocalDateTime varauksenAlku;
+    private LocalDateTime varauksenLoppu;
+    private int hinta;
     private String lisatiedot;
 
-    public MajoitusvarausLuokka(int varausID, int asiakasID, int mokkiID, Timestamp varauksenAlku, Timestamp varauksenLoppu, String lisatiedot){
-
-        VarausID = varausID;
-        AsiakasID = asiakasID;
-        MokkiID = mokkiID;
+    public MajoitusvarausLuokka(int mokkiID, int asiakasID, LocalDateTime varauksenAlku, LocalDateTime varauksenLoppu, int hinta, String lisatiedot) {
+        this.mokkiID = mokkiID;
+        this.asiakasID = asiakasID;
         this.varauksenAlku = varauksenAlku;
         this.varauksenLoppu = varauksenLoppu;
+        this.hinta = hinta;
         this.lisatiedot = lisatiedot;
     }
-    /**
-     * Luodaan get- ja set metodit kaikille
-     */
 
-    /**
-     * palauttaa varaus -taulun pääavaimen
-     * @return
-     */
-    public int getVarausID() {
-        return VarausID;
-    }
-    /**
-     * palauttaa asiakas -taulun pääavaimen
-     * @return
-     */
-    public int getAsiakasID(){
-        return AsiakasID;
-    }
-    /**
-     * palauttaa mökki -taulun pääavaimen
-     * @return
-     */
+    // Getterit ja setterit
+
     public int getMokkiID() {
-        return MokkiID;
-    }
-    /**
-     * palauttaa varauksen alkupäivän
-     * @return
-     */
-    public Timestamp getVarauksenAlku() {
-        return varauksenAlku;
-    }
-    /**
-     * palauttaa varauksen loppupäivän
-     * @return
-     */
-    public Timestamp getVarauksenLoppu() {
-        return varauksenLoppu;
-    }
-    /**
-     * palauttaa lisätiedot
-     * @return
-     */
-    public String getLisatiedot() {
-        return lisatiedot;
-    }
+        return mokkiID; }
 
-    /**
-     * asettaa varaukselle pääavaimen
-     * @param varausID
-     */
-    public void setVarausID(int varausID){
-        this.VarausID = varausID;
-    }
-
-    /**
-     * asettaa asiakkaalle pääavaimen
-     * @param asiakasID
-     */
-    public void setAsiakasID(int asiakasID) {
-        AsiakasID = asiakasID;
-    }
-
-    /**
-     * asettaa mökille pääavaimen
-     * @param mokkiID
-     */
     public void setMokkiID(int mokkiID) {
-        MokkiID = mokkiID;
-    }
+        this.mokkiID = mokkiID; }
 
-    /**
-     * asettaa varauksella alkupäivämäärän
-     * @param varauksenAlku
-     */
-    public void setVarauksenAlku(Timestamp varauksenAlku) {
-        this.varauksenAlku = varauksenAlku;
-    }
+    public int getAsiakasID() {
+        return asiakasID; }
 
-    /**
-     * asettaa varaukselle loppupäivämäärän
-     * @param varauksenLoppu
-     */
-    public void setVarauksenLoppu(Timestamp varauksenLoppu) {
-        this.varauksenLoppu = varauksenLoppu;
-    }
+    public void setAsiakasID(int asiakasID) {
+        this.asiakasID = asiakasID; }
 
-    /**
-     * asettaa lisätiedot
-     * @param lisatiedot
-     */
+    public LocalDateTime getVarauksenAlku() {
+        return varauksenAlku; }
+
+    public void setVarauksenAlku(LocalDateTime varauksenAlku) {
+        this.varauksenAlku = varauksenAlku; }
+
+    public LocalDateTime getVarauksenLoppu() {
+        return varauksenLoppu; }
+
+    public void setVarauksenLoppu(LocalDateTime varauksenLoppu) {
+        this.varauksenLoppu = varauksenLoppu; }
+
+    public int getHinta() {
+        return hinta; }
+
+    public void setHinta(int hinta) {
+        this.hinta = hinta; }
+
+    public String getLisatiedot() {
+        return lisatiedot; }
+
     public void setLisatiedot(String lisatiedot) {
-        this.lisatiedot = lisatiedot;
-    }
+        this.lisatiedot = lisatiedot; }
 }
+
 
