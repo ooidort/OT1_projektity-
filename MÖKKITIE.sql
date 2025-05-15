@@ -4,7 +4,7 @@ USE mokki;
  
 CREATE TABLE `mokit`(
     `MokkiID` INT NOT NULL,
-    `osoite` INT NOT NULL,
+    `osoite` VARCHAR(255) NOT NULL,
     `varauksen_alku` DATETIME NOT NULL,
     `varauksen_loppu` DATETIME NOT NULL,
     `hinta` INT NOT NULL,
