@@ -25,12 +25,13 @@ public class MuokkaaLaskujaController {
     private Button takaisinButtonM;
     @FXML
     private ChoiceBox <AsiakasLuokka> valitseAsiakasCB;
-    @FXML
-    private ChoiceBox <LaskuLuokka> valitseLaskuCB;
+   @FXML
+   //private ChoiceBox <LaskuLuokka> valitseLaskuCB
+    private ChoiceBox <Integer> valitseLaskuCB;
 
 
 
-    @FXML
+   /** @FXML
     private void initialize() {
         AsiakasDAO asiakasDAO = new AsiakasDAO();
         ObservableList<AsiakasLuokka> asiakkaat = asiakasDAO.haeKaikkiAsiakkaat();
@@ -45,6 +46,29 @@ public class MuokkaaLaskujaController {
             }
         });
     }
+   **/
+   @FXML
+   private void initialize() {
+       try {
+           LaskuDAO laskudao = new LaskuDAO();
+           ObservableList<Integer> laskuLista = FXCollections.observableArrayList();
+
+           for (int i = 1; i <= 4; i++) {
+               LaskuLuokka haettuLasku = laskudao.getLasku(i);
+               if (haettuLasku != null) {
+                   laskuLista.add(haettuLasku.getLaskuID());
+                   System.out.println(haettuLasku.getLaskuID());
+               } else {
+                   System.out.println("Laskuja ei löytynyt");
+               }
+           }
+           valitseLaskuCB.setItems(laskuLista);
+       }
+       catch (Exception e) {
+           throw new RuntimeException(e);
+       }
+   }
+
     //Toiminto koti-buttonille
     public void kotiButton(javafx.event.ActionEvent actionEvent) {
 
@@ -123,7 +147,7 @@ public class MuokkaaLaskujaController {
     //Valitse lasku choiceBox toimimaan
     @FXML
     private void handleValitseLaskuCB() {
-        LaskuLuokka valittuLasku = valitseLaskuCB.getValue();
+        //LaskuLuokka valittuLasku = valitseLaskuCB.getValue();
     }
 
 
