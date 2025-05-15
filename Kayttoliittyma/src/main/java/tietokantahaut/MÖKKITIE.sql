@@ -49,6 +49,7 @@ CREATE TABLE `varaukset`(
     `lisatiedot` VARCHAR(255),
     FOREIGN KEY (`MokkiID`) REFERENCES `mokit` (`MokkiID`),
     FOREIGN KEY (`AsiakasID`) REFERENCES `asiakas` (`AsiakasID`)
+
 );
 
 ALTER TABLE
