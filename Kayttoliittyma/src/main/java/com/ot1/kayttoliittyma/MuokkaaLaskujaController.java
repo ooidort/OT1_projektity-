@@ -82,14 +82,14 @@ public class MuokkaaLaskujaController {
 
         try {
             FXMLLoader fxmlLoader = new
-                    FXMLLoader(getClass().getResource("/ui/laskut.fxml"));
+                    FXMLLoader(getClass().getResource("/ui/LaskunMuokkausIkkuna.fxml"));
             Parent root = fxmlLoader.load();
 
 
             Stage uusiIkkuna = new Stage();
             Scene takaisinScene = new Scene(root);
             uusiIkkuna.setScene(takaisinScene);
-            uusiIkkuna.setTitle("Laskujen hallinta");
+            uusiIkkuna.setTitle("Muokkaa tai poista laskuja");
             uusiIkkuna.show();
 
             Stage stage = (Stage) haeLaskuja.getScene().getWindow();

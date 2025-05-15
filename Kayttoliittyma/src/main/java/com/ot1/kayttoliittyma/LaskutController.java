@@ -83,7 +83,7 @@ public class LaskutController {
             uusiIkkuna.setTitle("Muokkaa ja poista laskuja");
             uusiIkkuna.show();
 
-            Stage stage = (Stage) muokkaaLaskujaButton.getScene().getWindow();
+            Stage stage = (Stage) takaisinButton.getScene().getWindow();
             stage.close();
 
         } catch (IOException e) {

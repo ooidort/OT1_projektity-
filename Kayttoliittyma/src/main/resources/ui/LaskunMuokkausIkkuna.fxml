@@ -7,21 +7,21 @@
 <?import javafx.scene.text.Text?>
 
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="567.0" prefWidth="848.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="567.0" prefWidth="848.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ot1.kayttoliittyma.LaskunMuokkausIkkunaController">
     <children>
-        <Button fx:id="takaisinButton" layoutX="34.0" layoutY="34.0" mnemonicParsing="false" text="Takaisin" />
-        <Button fx:id="kotiButton" layoutX="99.0" layoutY="34.0" mnemonicParsing="false" text="Koti" />
+        <Button fx:id="takaisinButton" layoutX="34.0" layoutY="34.0" mnemonicParsing="false" text="Takaisin" onAction="#takaisinButton"/>
+        <Button fx:id="kotiButton" layoutX="99.0" layoutY="34.0" mnemonicParsing="false" text="Koti" onAction="#kotiButton"/>
         <Text layoutX="138.0" layoutY="133.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Päivämäärä:" />
-        <DatePicker fx:id="laskuPaivamaaraDatePicker" layoutX="308.0" layoutY="116.0" />
+        <DatePicker fx:id="laskuPaivamaaraDatePicker" layoutX="308.0" layoutY="116.0" onAction="#handleAloitusPaiva"/>
         <Text layoutX="138.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Eräpäivä:" />
-        <DatePicker fx:id="laskuErapaivaDatePicker" layoutX="308.0" layoutY="172.0" />
+        <DatePicker fx:id="laskuErapaivaDatePicker" layoutX="308.0" layoutY="172.0" onAction="#handleEraPaiva"/>
         <Text layoutX="136.0" layoutY="242.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mökki:" />
-        <ChoiceBox fx:id="mokkiChoiceBox" layoutX="309.0" layoutY="225.0" prefHeight="25.0" prefWidth="174.0" />
+        <ChoiceBox fx:id="mokkiChoiceBox" layoutX="309.0" layoutY="225.0" prefHeight="25.0" prefWidth="174.0" onAction="#handleMokkiCB"/>
         <Text layoutX="138.0" layoutY="291.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Majoitettujen päivien määrä:" />
-        <ChoiceBox fx:id="paivatChoiceBox" layoutX="310.0" layoutY="277.0" prefHeight="25.0" prefWidth="174.0" />
+        <ChoiceBox fx:id="paivatChoiceBox" layoutX="310.0" layoutY="277.0" prefHeight="25.0" prefWidth="174.0" onAction="#handlePaivatCB"/>
         <Text layoutX="138.0" layoutY="348.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Loppusiivous:" />
-        <ChoiceBox fx:id="loppusiivousChoiceBox" layoutX="311.0" layoutY="331.0" prefHeight="25.0" prefWidth="174.0" />
-        <Button fx:id="tallennaButton" layoutX="133.0" layoutY="437.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" text="Tallenna" />
-        <Button fx:id="PoistaLaskuBt" layoutX="308.0" layoutY="438.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" text="Poista lasku" />
+        <ChoiceBox fx:id="loppusiivousChoiceBox" layoutX="311.0" layoutY="331.0" prefHeight="25.0" prefWidth="174.0" onAction="#handleLoppusiivousCB"/>
+        <Button fx:id="tallennaButton" layoutX="133.0" layoutY="437.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" text="Tallenna" onAction="#handleTallennaBt"/>
+        <Button fx:id="PoistaLaskuBt" layoutX="308.0" layoutY="438.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" text="Poista lasku" onAction="#handlePoistaLaskuBt"/>
     </children>
 </AnchorPane>

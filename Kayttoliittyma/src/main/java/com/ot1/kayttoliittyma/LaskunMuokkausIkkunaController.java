@@ -14,7 +14,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.time.LocalDate;
 
-public class UusiLaskuController {
+public class LaskunMuokkausIkkunaController {
     @FXML
     private Button takaisinButton;
     @FXML
@@ -22,11 +22,11 @@ public class UusiLaskuController {
     @FXML
     private Button tallennaButton;
     @FXML
+    private Button poistaLaskuButton;
+    @FXML
     private DatePicker laskuPaivamaaraDatePicker;
     @FXML
     private DatePicker laskuErapaivaDatePicker;
-    @FXML
-    private ChoiceBox <String> asiakasChoiceBox;
     @FXML
     private ChoiceBox <String >mokkiChoiceBox;
     @FXML
@@ -36,13 +36,9 @@ public class UusiLaskuController {
 
     @FXML
     private void initialize() {
-        ObservableList<String> asiakasLista = FXCollections.observableArrayList("Asiakas 1", "Asiakas 2", "Asiakas 3");
         ObservableList<String> mokkiLista = FXCollections.observableArrayList("Mökki1", "Mökki 2", "Mökki 3");
         ObservableList<String> paivatLista = FXCollections.observableArrayList("1", "2", "3");
         ObservableList<String> loppusiivousLista = FXCollections.observableArrayList("0", "1", "2");
-
-        asiakasChoiceBox.setValue("Asiakas 1");
-        asiakasChoiceBox.setItems(asiakasLista);
 
         mokkiChoiceBox.setValue("Mökki 1");
         mokkiChoiceBox.setItems(mokkiLista);
@@ -53,9 +49,6 @@ public class UusiLaskuController {
         loppusiivousChoiceBox.setValue("0");
         paivatChoiceBox.setItems(loppusiivousLista);
     }
-
-
-
     //Toiminto koti-buttonille
     public void kotiButton(javafx.event.ActionEvent actionEvent) {
 
@@ -79,6 +72,7 @@ public class UusiLaskuController {
         }
 
     }
+
     //Toiminto takaisin-buttonille
     public void takaisinButton(javafx.event.ActionEvent actionEvent) {
 
@@ -116,37 +110,74 @@ public class UusiLaskuController {
         LocalDate eraPaiva = laskuErapaivaDatePicker.getValue();
         System.out.println("Eräpäivä: " + eraPaiva);
     }
-    //Asiakas choiceBox toimimaan
-    @FXML
-    private void handleAsiakasCB() {
-        String valittuAsiakas = asiakasChoiceBox.getValue();
-        System.out.println("Valittu asiakas: " + valittuAsiakas);
-    }
+
     //Mökki choiceBox toimimaan
     @FXML
     private void handleMokkiCB() {
         String valittuMokki = mokkiChoiceBox.getValue();
         System.out.println("Valittu mökki: " + valittuMokki);
     }
+
     //Majoitettujen päivien määrä toimimaan
     @FXML
     private void handlePaivatCB() {
         String valitutPaivat = paivatChoiceBox.getValue();
         System.out.println("Päivien määrä: " + valitutPaivat);
     }
+
     //Loppusiivous choiceBox toimiaan
     @FXML
     private void handleLoppusiivousCB() {
         String loppusiivous = loppusiivousChoiceBox.getValue();
         System.out.println("Loppusiivous: " + loppusiivous);
     }
+
     //Tallenna button toimimaan
     @FXML
     private void handleTallennaBt() {
         //Tallentaa tiedot tietokantaan
 
-        Stage stage = (Stage) tallennaButton.getScene().getWindow();
-        stage.close();
+        try {
+            FXMLLoader fxmlLoader = new
+                    FXMLLoader(getClass().getResource("/ui/MuokkaaJaPoistaLaskuja.fxml"));
+            Parent root = fxmlLoader.load();
+
+
+            Stage uusiIkkuna = new Stage();
+            Scene takaisinScene = new Scene(root);
+            uusiIkkuna.setScene(takaisinScene);
+            uusiIkkuna.setTitle("Muokkaa ja poista laskuja");
+            uusiIkkuna.show();
+
+            Stage stage = (Stage) takaisinButton.getScene().getWindow();
+            stage.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
+    //Poista lasku button toimimaan
+    @FXML
+    private void handlePoistaLaskuBt() {
+        //Poistaa laskun
+        try {
+            FXMLLoader fxmlLoader = new
+                    FXMLLoader(getClass().getResource("/ui/MuokkaaJaPoistaLaskuja.fxml"));
+            Parent root = fxmlLoader.load();
+
+
+            Stage uusiIkkuna = new Stage();
+            Scene takaisinScene = new Scene(root);
+            uusiIkkuna.setScene(takaisinScene);
+            uusiIkkuna.setTitle("Muokkaa ja poista laskuja");
+            uusiIkkuna.show();
+
+            Stage stage = (Stage) takaisinButton.getScene().getWindow();
+            stage.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
