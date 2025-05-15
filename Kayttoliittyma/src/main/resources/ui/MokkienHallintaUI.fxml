@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ot1.kayttoliittyma.MokkienHallintaUIController">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllerit.MokkienHallintaUIController">
    <children>
       <Text layoutX="200.0" layoutY="28.94921875" strokeType="OUTSIDE" strokeWidth="0.0" text="Huoneet" textAlignment="CENTER" wrappingWidth="202.13671875" />
       <TextArea editable="false" layoutX="200.0" layoutY="32.0" prefHeight="176.0" prefWidth="200.0" />

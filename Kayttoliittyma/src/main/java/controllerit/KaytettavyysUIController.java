@@ -1,4 +1,4 @@
-package com.ot1.kayttoliittyma;
+package controllerit;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,7 +9,8 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class HuoltotilaUIController {
+public class KaytettavyysUIController {
+
     @FXML
     private Button kotiButtonM;
     @FXML

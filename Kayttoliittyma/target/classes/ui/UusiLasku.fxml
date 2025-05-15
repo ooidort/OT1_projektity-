@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="567.0" prefWidth="848.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ot1.kayttoliittyma.UusiLaskuController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="567.0" prefWidth="848.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllerit.UusiLaskuController">
    <children>
       <Button fx:id="takaisinButton" layoutX="24.0" layoutY="24.0" mnemonicParsing="false" text="Takaisin" onAction="#takaisinButton"/>
       <Button fx:id="kotiButton" layoutX="89.0" layoutY="24.0" mnemonicParsing="false" text="Koti" onAction="#kotiButton"/>

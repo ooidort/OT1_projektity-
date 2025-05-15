@@ -1,7 +1,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.control.Button?>
 <AnchorPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.ot1.kayttoliittyma.majoitusvarausAloitusikkunaController"
+            fx:controller="controllerit.majoitusvarausAloitusikkunaController"
             prefHeight="400.0" prefWidth="600.0">
     <children>
         <Button fx:id="uusivarausBt" layoutX="112.0" layoutY="155.0" mnemonicParsing="false" onAction="#uusiVarausButton" prefHeight="66.0" prefWidth="120.0" text="UUSI VARAUS" />

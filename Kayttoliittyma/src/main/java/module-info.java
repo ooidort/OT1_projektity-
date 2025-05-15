@@ -9,4 +9,6 @@ module com.ot1.kayttoliittyma {
     exports com.ot1.kayttoliittyma;
     exports tietokantahaut;
     opens tietokantahaut to javafx.fxml;
+    exports controllerit;
+    opens controllerit to javafx.fxml;
 }

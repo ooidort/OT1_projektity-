@@ -1,4 +1,4 @@
-package com.ot1.kayttoliittyma;
+package controllerit;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

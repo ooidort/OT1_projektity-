@@ -1,4 +1,4 @@
-package com.ot1.kayttoliittyma;
+package controllerit;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -6,13 +6,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import tietokantahaut.MokitDAO;
 import tietokantahaut.MokkiLuokka;
 
-import javax.security.auth.login.AccountNotFoundException;
-import java.io.BufferedReader;
 import java.io.IOException;
 
 public class AlkuNayttoUIController {

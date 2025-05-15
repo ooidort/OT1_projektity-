@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ot1.kayttoliittyma.HuoltotilaUIController">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllerit.HuoltotilaUIController">
        <children>
            <Button fx:id="kotiButtonM" layoutX="14.0" layoutY="11.0" mnemonicParsing="false" onAction="#kotiButton" text="Koti" />
            <Button fx:id="takaisinButtonM" layoutX="67.0" layoutY="11.0" mnemonicParsing="false" onAction="#takaisinButton" text="Takaisin" />
