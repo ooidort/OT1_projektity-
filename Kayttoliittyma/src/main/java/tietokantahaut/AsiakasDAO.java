@@ -47,6 +47,7 @@ public class AsiakasDAO {
 
 
 
+
     public ObservableList<AsiakasLuokka> haeKaikkiAsiakkaat() {
         ObservableList<AsiakasLuokka> asiakkaat = FXCollections.observableArrayList();
         String sql = "SELECT * FROM asiakas";
@@ -71,5 +72,6 @@ public class AsiakasDAO {
 
         return asiakkaat;
     }
+
 }
 
