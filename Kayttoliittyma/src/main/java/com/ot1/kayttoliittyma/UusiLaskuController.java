@@ -37,20 +37,16 @@ public class UusiLaskuController {
     @FXML
     private void initialize() {
         ObservableList<String> asiakasLista = FXCollections.observableArrayList("Asiakas 1", "Asiakas 2", "Asiakas 3");
-        ObservableList<String> mokkiLista = FXCollections.observableArrayList("Mökki1", "Mökki 2", "Mökki 3");
-        ObservableList<String> paivatLista = FXCollections.observableArrayList("1", "2", "3");
-        ObservableList<String> loppusiivousLista = FXCollections.observableArrayList("0", "1", "2");
+        ObservableList<String> mokkiLista = FXCollections.observableArrayList("Mökki1", "Mökki 2", "Mökki 3", "Mökki 4");
+        ObservableList<String> paivatLista = FXCollections.observableArrayList("1", "2", "3", "4", "5", "6","7","8","9", "10");
+        ObservableList<String> loppusiivousLista = FXCollections.observableArrayList("0", "1");
 
-        asiakasChoiceBox.setValue("Asiakas 1");
         asiakasChoiceBox.setItems(asiakasLista);
 
-        mokkiChoiceBox.setValue("Mökki 1");
         mokkiChoiceBox.setItems(mokkiLista);
 
-        paivatChoiceBox.setValue("1");
         paivatChoiceBox.setItems(paivatLista);
 
-        loppusiivousChoiceBox.setValue("0");
         loppusiivousChoiceBox.setItems(loppusiivousLista);
     }
 

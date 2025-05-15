@@ -30,7 +30,6 @@ public class MuokkaaLaskujaController {
         ObservableList<String> asiakasLista = FXCollections.observableArrayList("Asiakas 1", "Asiakas 2", "Asiakas 3");
         ObservableList<String> laskuLista = FXCollections.observableArrayList("Lasku 1", "Lasku 2", "Lasku 3");
 
-        valitseAsiakasCB.setValue("Asiakas 1");
         valitseAsiakasCB.setItems(asiakasLista);
 
         valitseLaskuCB.setItems(laskuLista);
@@ -108,7 +107,6 @@ public class MuokkaaLaskujaController {
     @FXML
     private void handleAsiakasCB() {
         String valittuAsiakas = valitseAsiakasCB.getValue();
-        System.out.println("Valittu asiakas: " + valittuAsiakas);
     }
 
     //Valitse lasku choiceBox toimimaan
