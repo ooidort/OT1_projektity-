@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ot1.kayttoliittyma.uusivarausController">
+    <children>
+        <VBox fx:id="uusiVarausBox" prefHeight="366.0" prefWidth="169.0">
+            <children>
+                <Label fx:id="uusiVaraus" prefHeight="17.0" prefWidth="167.0" text="Uusi varaus" />
+                <Label fx:id="mokkiLabel" prefHeight="17.0" prefWidth="167.0" text="Mökki:" />
+                <ChoiceBox fx:id="uusivarausChoice" prefWidth="150.0" />
+                <Label fx:id="asiakasLabel" prefHeight="17.0" prefWidth="167.0" text="Asiakas:" />
+                <TextField fx:id="asiakasField" text="asiakkaan nimi" />
+                <Label fx:id="alkuPaivaLabel" prefHeight="17.0" prefWidth="167.0" text="Alkupäivä:" />
+                <DatePicker fx:id="alkupaivaDate" />
+                <Label fx:id="loppuPaivaLabel" prefHeight="17.0" prefWidth="167.0" text="Loppupäivä:" />
+                <DatePicker fx:id="loppupaivaDate" />
+                <Label fx:id="lisatietoLabel" prefHeight="17.0" prefWidth="167.0" text="Lisätietoja:" />
+                <TextField fx:id="lisatietoField" text="Puhelinnumero" />
+                <Button fx:id="tallennavarausBt" mnemonicParsing="false" onAction="#tallennaVaraus" text="Tallenna varaus" />
+                <Button fx:id="peruutaBt" mnemonicParsing="false" onAction="#peruutaMuutokset" text="Peruuta" />
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>
+

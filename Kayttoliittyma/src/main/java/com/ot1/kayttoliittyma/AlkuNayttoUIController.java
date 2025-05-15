@@ -30,12 +30,15 @@ public class AlkuNayttoUIController {
         try {
             MokitDAO mokitdao = new MokitDAO();
 
-            MokkiLuokka haetttuMokki = mokitdao.getMokki(1);
-            if (haetttuMokki != null) {
-                System.out.println("Hait seuraavan mökin tiedot: " + " " + haetttuMokki.getMokkiID() +
-                        haetttuMokki.getOsoite() + " " + haetttuMokki.getHinta());
-            } else {
-                System.out.println("Mökkiä ei löytynyt!");
+            for (int i = 1; i <= 4; i++) {
+                MokkiLuokka haettuMokki = mokitdao.getMokki(i);
+                if (haettuMokki != null) {
+                    System.out.println("Hait seuraavan mökin tiedot: " +
+                            haettuMokki.getMokkiID() + " " + haettuMokki.getOsoite() +
+                            " " + haettuMokki.getHinta());
+                } else {
+                    System.out.println("Mökkejä ei löytynyt!");
+                }
             }
 
             System.out.println("Klikkasit mökkienhallintanäppäintä!");

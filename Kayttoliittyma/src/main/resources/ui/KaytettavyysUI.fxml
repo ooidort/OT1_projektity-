@@ -2,22 +2,17 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ot1.kayttoliittyma.KaytettavyysUIController">
    <children>
-      <VBox layoutX="92.0" layoutY="14.0" prefHeight="600.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <TextArea editable="false" prefHeight="197.0" prefWidth="800.0" text="Tulevat varaukset:" />
-            <TextArea editable="false" prefHeight="200.0" prefWidth="200.0" />
-            <TextArea editable="false" prefHeight="199.0" prefWidth="800.0" text="Menneet varaukset:&#10;" />
-            <TextArea editable="false" prefHeight="200.0" prefWidth="200.0" />
-            <HBox prefHeight="159.0" prefWidth="800.0">
-               <children>
-                  <TextArea editable="false" prefHeight="70.0" prefWidth="200.0" text="Varausten määrä:&#10;" />
-                  <TextArea editable="false" prefHeight="200.0" prefWidth="200.0" />
-               </children>
-            </HBox>
-         </children>
-      </VBox>
+      <Button fx:id="kotiButtonM" layoutX="14.0" layoutY="11.0" mnemonicParsing="false" onAction="#kotiButton" text="Koti" />
+      <Button fx:id="takaisinButtonM" layoutX="67.0" layoutY="11.0" mnemonicParsing="false" onAction="#takaisinButton" text="Takaisin" />
+      <TextArea editable="false" layoutX="384.0" layoutY="54.0" prefHeight="134.0" prefWidth="327.0" />
+      <Text layoutX="276.0" layoutY="126.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tulevat varaukset" />
+      <Text layoutX="271.0" layoutY="318.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Menneet varaukset" />
+      <Text layoutX="277.0" layoutY="502.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Varausten määrä" />
+      <TextArea editable="false" layoutX="384.0" layoutY="247.0" prefHeight="134.0" prefWidth="327.0" />
+      <TextArea editable="false" layoutX="384.0" layoutY="431.0" prefHeight="134.0" prefWidth="327.0" />
    </children>
 </AnchorPane>
