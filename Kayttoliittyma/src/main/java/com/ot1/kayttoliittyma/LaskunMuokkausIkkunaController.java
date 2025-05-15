@@ -47,7 +47,7 @@ public class LaskunMuokkausIkkunaController {
         paivatChoiceBox.setItems(paivatLista);
 
         loppusiivousChoiceBox.setValue("0");
-        paivatChoiceBox.setItems(loppusiivousLista);
+        loppusiivousChoiceBox.setItems(loppusiivousLista);
     }
     //Toiminto koti-buttonille
     public void kotiButton(javafx.event.ActionEvent actionEvent) {

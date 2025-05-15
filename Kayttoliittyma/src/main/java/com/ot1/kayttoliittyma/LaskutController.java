@@ -136,8 +136,5 @@ public class LaskutController {
         }
 
     }
-    public void handleMennytLasku1() {
-
-    }
 
 }

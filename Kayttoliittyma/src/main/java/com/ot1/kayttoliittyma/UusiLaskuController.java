@@ -51,7 +51,7 @@ public class UusiLaskuController {
         paivatChoiceBox.setItems(paivatLista);
 
         loppusiivousChoiceBox.setValue("0");
-        paivatChoiceBox.setItems(loppusiivousLista);
+        loppusiivousChoiceBox.setItems(loppusiivousLista);
     }
 
 
@@ -145,8 +145,24 @@ public class UusiLaskuController {
     private void handleTallennaBt() {
         //Tallentaa tiedot tietokantaan
 
-        Stage stage = (Stage) tallennaButton.getScene().getWindow();
-        stage.close();
+        try {
+            FXMLLoader fxmlLoader = new
+                    FXMLLoader(getClass().getResource("/ui/laskut.fxml"));
+            Parent root = fxmlLoader.load();
+
+
+            Stage uusiIkkuna = new Stage();
+            Scene kotiButtonScene = new Scene(root);
+            uusiIkkuna.setScene(kotiButtonScene);
+            uusiIkkuna.setTitle("Mökkitie");
+            uusiIkkuna.show();
+
+            Stage stage = (Stage) kotiButton.getScene().getWindow();
+            stage.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }
