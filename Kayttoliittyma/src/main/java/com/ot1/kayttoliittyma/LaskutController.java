@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -23,6 +24,27 @@ public class LaskutController {
     private Button uusiLaskuButton;
     @FXML
     private Button muokkaaLaskujaButton;
+    @FXML
+    private TextArea mennytlasku1;
+    @FXML
+    private TextArea mennytlasku2;
+    @FXML
+    private TextArea mennytlasku3;
+    @FXML
+    private TextArea mennytlasku4;
+    @FXML
+    private TextArea mennytlasku5;
+    @FXML
+    private TextArea tulevaLasku1;
+    @FXML
+    private TextArea tulevaLasku2;
+    @FXML
+    private TextArea tulevaLasku3;
+    @FXML
+    private TextArea tulevaLasku4;
+    @FXML
+    private TextArea tulevaLasku5;
+
 
     public void uusiLaskuButton(javafx.event.ActionEvent actionEvent) {
 
@@ -112,6 +134,9 @@ public class LaskutController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+    }
+    public void handleMennytLasku1() {
 
     }
 

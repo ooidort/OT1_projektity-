@@ -16,7 +16,7 @@
             <Button fx:id="muokkaLaskujaButton" layoutX="50.0" layoutY="179.0" mnemonicParsing="false" prefHeight="74.0" prefWidth="152.0" text="Muokka ja poista laskuja" onAction="#muokkaaLaskujaButton"/>
             <Text layoutX="342.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Menneet laskut" />
             <Text layoutX="578.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Erääntyvät laskut" />
-            <TextArea layoutX="324.0" layoutY="79.0" prefHeight="52.0" prefWidth="194.0" text="Laskun 1 tietoja" />
+            <TextArea fx:id="lasku1" layoutX="324.0" layoutY="79.0" prefHeight="52.0" prefWidth="194.0" text="Laskun 1 tietoja" />
             <TextArea layoutX="324.0" layoutY="153.0" prefHeight="52.0" prefWidth="194.0" text="Laskun 2 tietoja" />
             <TextArea layoutX="324.0" layoutY="227.0" prefHeight="52.0" prefWidth="194.0" text="Laskun 3 tietoja" />
             <TextArea layoutX="324.0" layoutY="304.0" prefHeight="52.0" prefWidth="194.0" text="Laskun 4 tietoja" />
