@@ -21,15 +21,19 @@ public class MuokkaaLaskujaController {
     private Button takaisinButtonM;
     @FXML
     private ChoiceBox <String> valitseAsiakasCB;
+    @FXML
+    private ChoiceBox<String> valitseLaskuCB;
 
 
     @FXML
     private void initialize() {
         ObservableList<String> asiakasLista = FXCollections.observableArrayList("Asiakas 1", "Asiakas 2", "Asiakas 3");
+        ObservableList<String> laskuLista = FXCollections.observableArrayList("Lasku 1", "Lasku 2", "Lasku 3");
 
         valitseAsiakasCB.setValue("Asiakas 1");
         valitseAsiakasCB.setItems(asiakasLista);
 
+        valitseLaskuCB.setItems(laskuLista);
     }
     //Toiminto koti-buttonille
     public void kotiButton(javafx.event.ActionEvent actionEvent) {
@@ -105,6 +109,12 @@ public class MuokkaaLaskujaController {
     private void handleAsiakasCB() {
         String valittuAsiakas = valitseAsiakasCB.getValue();
         System.out.println("Valittu asiakas: " + valittuAsiakas);
+    }
+
+    //Valitse lasku choiceBox toimimaan
+    @FXML
+    private void handleValitseLaskuCB() {
+        String valittuLasku = valitseLaskuCB.getValue();
     }
 
 
