@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllerit.uusivarausController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ot1.kayttoliittyma.uusivarausController">
     <children>
         <VBox fx:id="uusiVarausBox" prefHeight="366.0" prefWidth="169.0">
             <children>
@@ -26,6 +26,8 @@
                 <TextField fx:id="lisatietoField" text="Puhelinnumero" />
                 <Button fx:id="tallennavarausBt" mnemonicParsing="false" onAction="#tallennaVaraus" text="Tallenna varaus" />
                 <Button fx:id="peruutaBt" mnemonicParsing="false" onAction="#peruutaMuutokset" text="Peruuta" />
+                <Button fx:id="kotiButton" text="Takaisin kotiin" onAction="#kotiButton"/>
+                <Button fx:id="takaisinButton" text="Edellinen näkymä" onAction="#takaisinButton"/>
             </children>
         </VBox>
     </children>

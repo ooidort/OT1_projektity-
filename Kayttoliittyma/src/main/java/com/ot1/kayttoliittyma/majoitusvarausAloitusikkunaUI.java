@@ -15,7 +15,7 @@ public class majoitusvarausAloitusikkunaUI extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ui/majoitusvarausUusi.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ui/majoitusvarausAloitusIkkuna.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 320, 240);
         primaryStage.setTitle("Majoitusvaraukset");
         primaryStage.setScene(scene);

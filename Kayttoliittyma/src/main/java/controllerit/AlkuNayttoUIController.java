@@ -64,7 +64,7 @@ public class AlkuNayttoUIController {
         try{
             System.out.println("Klikkasit majoitusvarausnäppäintä!");
             FXMLLoader fxmlLoader = new FXMLLoader
-                    (getClass().getResource("/ui/majoitusvarausUusi.fxml"));
+                    (getClass().getResource("/ui/majoitusvarausAloitusIkkuna.fxml"));
             Parent root = fxmlLoader.load();
             Stage varausIkkuna = new Stage();
             Scene majoitusVarauksetScene = new Scene(root);

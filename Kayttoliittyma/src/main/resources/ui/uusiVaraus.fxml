@@ -26,6 +26,8 @@
                 <TextField fx:id="lisatietoField" text="Puhelinnumero" />
                 <Button fx:id="tallennavarausBt" mnemonicParsing="false" onAction="#tallennaVaraus" text="Tallenna varaus" />
                 <Button fx:id="peruutaBt" mnemonicParsing="false" onAction="#peruutaMuutokset" text="Peruuta" />
+                <Button fx:id="kotiButton" text="Takaisin kotiin" onAction="#kotiButton"/>
+                <Button fx:id="takaisinButton" text="Edellinen näkymä" onAction="#takaisinButton"/>
             </children>
         </VBox>
     </children>
