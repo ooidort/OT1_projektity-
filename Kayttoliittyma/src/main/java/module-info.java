@@ -7,8 +7,6 @@ module com.ot1.kayttoliittyma {
 
     opens com.ot1.kayttoliittyma to javafx.fxml;
     exports com.ot1.kayttoliittyma;
-    exports src.main.java.com.ot1.kayttoliittyma;
-    opens src.main.java.com.ot1.kayttoliittyma to javafx.fxml;
     exports tietokantahaut;
     opens tietokantahaut to javafx.fxml;
 }

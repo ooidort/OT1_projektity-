@@ -14,6 +14,14 @@ import java.io.BufferedReader;
 import java.io.IOException;
 
 public class AlkuNayttoUIController {
+    @FXML
+    private Button laskutButton;
+    @FXML
+    private Button mokitButton;
+    @FXML
+    private Button asiakasButton;
+    @FXML
+    private Button varauksetButton;
 
     public void mokkienhallintaButton(javafx.event.ActionEvent actionEvent) {
 
@@ -30,6 +38,9 @@ public class AlkuNayttoUIController {
             uusiIkkuna.setTitle("Mökkien hallinta");
             uusiIkkuna.show();
 
+            Stage stage = (Stage) mokitButton.getScene().getWindow();
+            stage.close();
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -38,7 +49,24 @@ public class AlkuNayttoUIController {
     }
 
     public void majoitusvarauksetButton(ActionEvent actionEvent) {
-        System.out.println("Klikkasit majoitusvarausnäppäintä!");
+        try{
+            System.out.println("Klikkasit majoitusvarausnäppäintä!");
+            FXMLLoader fxmlLoader = new FXMLLoader
+                    (getClass().getResource("/ui/MajoitusvarausUI.fxml"));
+            Parent root = fxmlLoader.load();
+            Stage varausIkkuna = new Stage();
+            Scene majoitusVarauksetScene = new Scene(root);
+            varausIkkuna.setTitle("Majoitusvaraukset");
+            varausIkkuna.setScene(majoitusVarauksetScene);
+            varausIkkuna.show();
+
+            Stage stage = (Stage) varauksetButton.getScene().getWindow();
+            stage.close();
+
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
     public void asiakashallintaButton(ActionEvent actionEvent) {
@@ -46,6 +74,23 @@ public class AlkuNayttoUIController {
     }
 
     public void laskutmetodiButton(ActionEvent actionEvent) {
-        System.out.println("Klikkasit laskut-näppäintä!");
+        try {
+            FXMLLoader fxmlLoader = new
+                    FXMLLoader(getClass().getResource("/ui/laskut.fxml"));
+            Parent root = fxmlLoader.load();
+
+
+            Stage uusiIkkuna = new Stage();
+            Scene laskutScene = new Scene(root);
+            uusiIkkuna.setScene(laskutScene);
+            uusiIkkuna.setTitle("Laskujen hallinta");
+            uusiIkkuna.show();
+
+            Stage stage = (Stage) laskutButton.getScene().getWindow();
+            stage.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
