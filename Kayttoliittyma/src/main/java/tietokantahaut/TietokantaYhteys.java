@@ -12,7 +12,7 @@ public class TietokantaYhteys {
      */
     private static final String URL = "jdbc:mysql://localhost:3306/mokki";
     private static final String kayttaja = "root";
-    private static final String salasana = "67901265"; //67901265
+    private static final String salasana = "root"; //67901265
 
     /**
      * Metodi jolla yhdistetään käyttäjä mySQL-serveriin

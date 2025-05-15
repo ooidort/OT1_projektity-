@@ -17,15 +17,13 @@
                 <Label fx:id="mokkiLabel1" prefHeight="17.0" prefWidth="167.0" text="Mökki:" />
                 <ChoiceBox fx:id="muokkaaChoice" prefWidth="150.0" />
                 <Label fx:id="asiakasLabel1" prefHeight="17.0" prefWidth="167.0" text="Asiakas:" />
-                <TextField fx:id="asiakasField1" text="asiakkaan nimi" />
+                <ChoiceBox fx:id="asiakasChoiceBox1" prefWidth="150.0" />
                 <Label fx:id="alkuPaivaLabel1" prefHeight="17.0" prefWidth="167.0" text="Alkupäivä:" />
                 <DatePicker fx:id="alkupaivaDate1" />
                 <Label fx:id="loppuPaivaLabel1" prefHeight="17.0" prefWidth="167.0" text="Loppupäivä:" />
                 <DatePicker fx:id="loppupaivaDate1" />
-                <Label fx:id="lisatietoLabel1" prefHeight="17.0" prefWidth="167.0" text="Lisätietoja:" />
-                <TextField fx:id="lisatietoField1" text="Puhelinnumero" />
                 <Button fx:id="tallennavarausBt1" mnemonicParsing="false" onAction="#tallennaMuutos" text="Tallenna muutokset" />
-                <Button fx:id="peruutaBt1" mnemonicParsing="false" onAction="#peruutaMuutokset" text="Peruuta" />
+                <Button fx:id="peruutaBt1" mnemonicParsing="false" onAction="#peruutaMuutokset" text="Tyhjennä" />
                 <Button fx:id="poistavarausBt" mnemonicParsing="false" onAction="#poistaVaraus" text="Poista varaus" />
                 <Button fx:id="takaisinButton" text="Takaisin edelliseen" onAction="#takaisinButton"/>
                 <Button fx:id="kotiButton" text="Koti" onAction="#kotiButton"/>

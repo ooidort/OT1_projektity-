@@ -9,6 +9,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import tietokantahaut.MajoitusvarausLuokka;
+import tietokantahaut.VarausDAO;
 
 import java.io.IOException;
 import java.net.URL;
@@ -24,16 +26,11 @@ public class muokkaavarauksiaController implements Initializable {
     private DatePicker alkupaivaDate1;
 
     @FXML
-    private TextField asiakasField1;
+    private ChoiceBox<String> asiakasChoiceBox1;
+    private String[] asiakkaat = {"Asiakas 1", "Asiakas 2", "Asiakas 3", "Asiakas 4"};
 
     @FXML
     private Label asiakasLabel1;
-
-    @FXML
-    private TextField lisatietoField1;
-
-    @FXML
-    private Label lisatietoLabel1;
 
     @FXML
     private Label loppuPaivaLabel1;
@@ -66,6 +63,8 @@ public class muokkaavarauksiaController implements Initializable {
     @FXML
     private Button takaisinButton;
 
+    private int haettuVarausID = -1;
+
     @FXML
     private Label uusiVaraus1;
 
@@ -79,9 +78,9 @@ public class muokkaavarauksiaController implements Initializable {
 
     @FXML
     void tyhjennaKentat() {
+        System.out.println("Tyhjensit kentät");
         // tekstikenttien tyhjennys
-        asiakasField1.clear();
-        lisatietoField1.clear();
+        asiakasChoiceBox1.setValue(null);
 
         // choicebox palautus oletusarvoon
         muokkaaChoice.setValue(null);
@@ -97,6 +96,7 @@ public class muokkaavarauksiaController implements Initializable {
         tyhjennaKentat();
         System.out.println("Kentät tyhjennetty.");
     }
+
     public void kotiButton(ActionEvent event) {
         try {
             FXMLLoader fxmlLoader = new
@@ -116,8 +116,8 @@ public class muokkaavarauksiaController implements Initializable {
             e.printStackTrace();
         }
     }
-    public void takaisinButton(javafx.event.ActionEvent actionEvent) {
 
+    public void takaisinButton(javafx.event.ActionEvent actionEvent) {
         try {
             FXMLLoader fxmlLoader = new
                     FXMLLoader(getClass().getResource("/ui/majoitusvarausAloitusIkkuna.fxml"));
@@ -150,45 +150,59 @@ public class muokkaavarauksiaController implements Initializable {
         vahvistusHuomautus.getButtonTypes().setAll(kyllaBt, eiBt);
 
         Optional<ButtonType> result = vahvistusHuomautus.showAndWait();
+
         if (result.isPresent() && result.get() == kyllaBt) {
-            System.out.println("Varaus poistettu!");
-            // lisää poiston logiikka tietokantaan
-        } else {
-            System.out.println("Tapahtuma peruttu.");
+            try {
+                int varausID = haettuVarausID; // Tee tämä metodi!!
+                VarausDAO poisto = new VarausDAO();
+                poisto.poistaVaraus(varausID);
+
+                Alert ilmoitus = new Alert(Alert.AlertType.INFORMATION); // ilmoitus poistetusta varauksesta
+                ilmoitus.setTitle("Varaus poistettu");
+                ilmoitus.setHeaderText(null);
+                ilmoitus.setContentText("Varauksen poistaminen onnistui!");
+                ilmoitus.showAndWait();
+
+                tyhjennaKentat();
+            } catch (Exception e) {
+                e.printStackTrace();
+                syoteVaroitus("Virhe", "Virhe varauksen poistamisessa");
+            }
         }
     }
 
     @FXML
     void tallennaMuutos(ActionEvent event) {
         try {
-            int asiakasID = Integer.parseInt(asiakasField1.getText());
+            String asiakasString = asiakasChoiceBox1.getValue();
+            int asiakasID = parseAsiakasID(asiakasString);
             int mokkiID = parseMokkiID(muokkaaChoice.getValue());
             LocalDate alku = alkupaivaDate1.getValue();
             LocalDate loppu = loppupaivaDate1.getValue();
-            String lisatiedot = lisatietoField1.getText();
 
-            // kenttien tarkastus
-            if (mokkiID == -1 || alku == null || loppu == null) {
+            // tarkastaa kentät
+            if (asiakasID == -1 || mokkiID == -1 || alku == null || loppu == null) {
                 syoteVaroitus("Tarkista kentät", "Jokin kenttä virheellinen");
                 return;
             }
+
             // tietokantaan tallennus
             System.out.println("Tallennetaan muutos:");
             System.out.println("Asiakas ID: " + asiakasID);
             System.out.println("Mökki ID: " + mokkiID);
             System.out.println("Alku: " + alku);
             System.out.println("Loppu: " + loppu);
-            System.out.println("Lisätiedot: " + lisatiedot);
 
             Alert tallennaVahvistus = new Alert(Alert.AlertType.INFORMATION);
             tallennaVahvistus.setTitle("Tallennus onnistui");
             tallennaVahvistus.setHeaderText(null);
             tallennaVahvistus.setContentText("Muutokset tallennettu onnistuneesti.");
             tallennaVahvistus.showAndWait();
-        }catch (NumberFormatException e){
-            syoteVaroitus("Virheellinen syöte", "Asiakas ID ei kelvollinen");
+        } catch (NumberFormatException e) {
+            syoteVaroitus("Virheellinen syöte", "asiakasID tai mokkiID virheellinen");
         }
     }
+
     private void syoteVaroitus(String otsikko, String viesti) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle(otsikko);
@@ -196,6 +210,7 @@ public class muokkaavarauksiaController implements Initializable {
         alert.setContentText(viesti);
         alert.showAndWait();
     }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // varaus choiceboxit
@@ -203,10 +218,28 @@ public class muokkaavarauksiaController implements Initializable {
         muokkaaChoice.getItems().addAll(mokit);
 
         // asiakas textfieldit
-        asiakasField1.setText("Etunimi Sukunimi");
+        asiakasChoiceBox1.setValue("Asiakas 1");
+        asiakasChoiceBox1.getItems().addAll(asiakkaat);
 
         // kalenterien prompt-tekstit
         alkupaivaDate1.setPromptText("PV/KK/VUOSI");
         loppupaivaDate1.setPromptText("PV/KK/VUOSI");
+    }
+
+    // Luodaan haettuvarausID -metodi
+    private void asetaValittuVaraus(MajoitusvarausLuokka varaus) {
+        haettuVarausID = varaus.getVarausID();
+        asiakasChoiceBox1.setValue("Asiakas: " + varaus.getAsiakasID());
+        muokkaaChoice.setValue("Mökki " + varaus.getMokkiID());
+        alkupaivaDate1.setValue(varaus.getVarauksenAlku().toLocalDate());
+        loppupaivaDate1.setValue(varaus.getVarauksenLoppu().toLocalDate());
+    }
+    // metodi, joka luo asiakasID:n merkkijonosta
+    private int parseAsiakasID(String asiakasString) {
+        try {
+            return Integer.parseInt(asiakasString.replaceAll("\\D+", ""));
+        } catch (NumberFormatException e) {
+            return -1; // Virheellinen syöte
+        }
     }
 }
