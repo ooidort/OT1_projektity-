@@ -27,6 +27,8 @@
                 <Button fx:id="tallennavarausBt1" mnemonicParsing="false" onAction="#tallennaMuutos" text="Tallenna muutokset" />
                 <Button fx:id="peruutaBt1" mnemonicParsing="false" onAction="#peruutaMuutokset" text="Peruuta" />
                 <Button fx:id="poistavarausBt" mnemonicParsing="false" onAction="#poistaVaraus" text="Poista varaus" />
+                <Button fx:id="takaisinButton" text="Takaisin edelliseen" onAction="#takaisinButton"/>
+                <Button fx:id="kotiButton" text="Koti" onAction="#kotiButton"/>
             </children>
         </VBox>
     </children>

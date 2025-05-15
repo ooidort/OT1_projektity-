@@ -96,7 +96,6 @@ public class UusiLaskuController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
     //Päivämäärä datepicker toimimaan

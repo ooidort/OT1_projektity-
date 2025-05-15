@@ -22,7 +22,7 @@ public class majoitusvarausAloitusikkunaController {
         try {
             // lataa uuden näkymän
             System.out.println("Klikkasit Uusi varaus -painiketta!");
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/majoitushahmottelu/uusiVaraus.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ui/uusiVaraus.fxml"));
             Parent root = fxmlLoader.load();
 
             Stage uusivarausIkkuna = new Stage();
@@ -38,7 +38,7 @@ public class majoitusvarausAloitusikkunaController {
     public void muokkaaVarauksiaButton(ActionEvent event){
         try{
             System.out.println("Klikkasit Poista ja muokkaa varauksia -painiketta!");
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/majoitushahmottelu/muokkaaVarauksia.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ui/muokkaaVarauksia.fxml"));
             Parent root = fxmlLoader.load();
 
             Stage poistajamuokkaaIkkuna = new Stage();

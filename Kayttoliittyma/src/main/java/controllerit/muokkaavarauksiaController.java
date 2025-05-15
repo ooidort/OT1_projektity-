@@ -2,10 +2,15 @@ package controllerit;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -55,6 +60,12 @@ public class muokkaavarauksiaController implements Initializable {
     private Button tallennavarausBt1;
 
     @FXML
+    private Button kotiButton;
+
+    @FXML
+    private Button takaisinButton;
+
+    @FXML
     private Label uusiVaraus1;
 
     @FXML
@@ -76,6 +87,47 @@ public class muokkaavarauksiaController implements Initializable {
     void peruutaMuutokset(ActionEvent event) {
         tyhjennaKentat();
         System.out.println("Kentät tyhjennetty.");
+    }
+    public void kotiButton(ActionEvent event) {
+        try {
+            FXMLLoader fxmlLoader = new
+                    FXMLLoader(getClass().getResource("/ui/AlkuNaytto.fxml"));
+            Parent root = fxmlLoader.load();
+
+
+            Stage uusiIkkuna = new Stage();
+            Scene kotiButtonScene = new Scene(root);
+            uusiIkkuna.setScene(kotiButtonScene);
+            uusiIkkuna.setTitle("Mökkitie");
+            uusiIkkuna.show();
+
+            Stage stage = (Stage) kotiButton.getScene().getWindow();
+            stage.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public void takaisinButton(javafx.event.ActionEvent actionEvent) {
+
+        try {
+            FXMLLoader fxmlLoader = new
+                    FXMLLoader(getClass().getResource("/ui/majoitusvarausAloitusIkkuna.fxml"));
+            Parent root = fxmlLoader.load();
+
+
+            Stage uusiIkkuna = new Stage();
+            Scene takaisinScene = new Scene(root);
+            uusiIkkuna.setScene(takaisinScene);
+            uusiIkkuna.setTitle("Mökkitie");
+            uusiIkkuna.show();
+
+            Stage stage = (Stage) takaisinButton.getScene().getWindow();
+            stage.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
