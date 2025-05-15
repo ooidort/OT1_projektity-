@@ -1,5 +1,8 @@
 package tietokantahaut;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -40,6 +43,33 @@ public class AsiakasDAO {
             e.printStackTrace();
         }
         return null;
+    }
+
+
+
+    public ObservableList<AsiakasLuokka> haeKaikkiAsiakkaat() {
+        ObservableList<AsiakasLuokka> asiakkaat = FXCollections.observableArrayList();
+        String sql = "SELECT * FROM asiakas";
+
+        try (Connection conn = TietokantaYhteys.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql);
+             ResultSet rs = stmt.executeQuery()) {
+
+            while (rs.next()) {
+                AsiakasLuokka asiakas = new AsiakasLuokka(
+                        rs.getInt("AsiakasID"),
+                        rs.getString("nimi"),
+                        rs.getString("sahkoposti"),
+                        rs.getString("osoite"),
+                        rs.getString("puhelinnumero")
+                );
+                asiakkaat.add(asiakas);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return asiakkaat;
     }
 }
 

@@ -9,6 +9,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.stage.Stage;
+import tietokantahaut.AsiakasDAO;
+import tietokantahaut.AsiakasLuokka;
+import tietokantahaut.LaskuDAO;
+import tietokantahaut.LaskuLuokka;
 
 import java.io.IOException;
 
@@ -20,19 +24,26 @@ public class MuokkaaLaskujaController {
     @FXML
     private Button takaisinButtonM;
     @FXML
-    private ChoiceBox <String> valitseAsiakasCB;
+    private ChoiceBox <AsiakasLuokka> valitseAsiakasCB;
     @FXML
-    private ChoiceBox<String> valitseLaskuCB;
+    private ChoiceBox <LaskuLuokka> valitseLaskuCB;
+
 
 
     @FXML
     private void initialize() {
-        ObservableList<String> asiakasLista = FXCollections.observableArrayList("Asiakas 1", "Asiakas 2", "Asiakas 3");
-        ObservableList<String> laskuLista = FXCollections.observableArrayList("Lasku 1", "Lasku 2", "Lasku 3");
+        AsiakasDAO asiakasDAO = new AsiakasDAO();
+        ObservableList<AsiakasLuokka> asiakkaat = asiakasDAO.haeKaikkiAsiakkaat();
+        valitseAsiakasCB.setItems(asiakkaat);
 
-        valitseAsiakasCB.setItems(asiakasLista);
-
-        valitseLaskuCB.setItems(laskuLista);
+        valitseAsiakasCB.setOnAction(event -> {
+            AsiakasLuokka valittuAsiakas = valitseAsiakasCB.getValue();
+            if (valittuAsiakas != null) {
+                LaskuDAO laskuDAO = new LaskuDAO();
+                ObservableList<LaskuLuokka> laskut = laskuDAO.haeLaskutAsiakkaalle(valittuAsiakas.getAsiakasID());
+                valitseLaskuCB.setItems(laskut);
+            }
+        });
     }
     //Toiminto koti-buttonille
     public void kotiButton(javafx.event.ActionEvent actionEvent) {
@@ -106,13 +117,13 @@ public class MuokkaaLaskujaController {
     //Asiakas choiceBox toimimaan
     @FXML
     private void handleAsiakasCB() {
-        String valittuAsiakas = valitseAsiakasCB.getValue();
+        AsiakasLuokka valittuAsiakas = valitseAsiakasCB.getValue();
     }
 
     //Valitse lasku choiceBox toimimaan
     @FXML
     private void handleValitseLaskuCB() {
-        String valittuLasku = valitseLaskuCB.getValue();
+        LaskuLuokka valittuLasku = valitseLaskuCB.getValue();
     }
 
 

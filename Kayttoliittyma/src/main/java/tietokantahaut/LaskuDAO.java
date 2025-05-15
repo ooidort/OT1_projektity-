@@ -1,5 +1,8 @@
 package tietokantahaut;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -38,5 +41,32 @@ public class LaskuDAO {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public ObservableList<LaskuLuokka> haeLaskutAsiakkaalle(int asiakasId) {
+        ObservableList<LaskuLuokka> laskut = FXCollections.observableArrayList();
+        String sql = "SELECT * FROM laskut WHERE AsiakasID = ?";
+
+        try (Connection conn = TietokantaYhteys.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, asiakasId);
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                LaskuLuokka lasku = new LaskuLuokka(
+                        rs.getInt("LaskuID"),
+                        rs.getTimestamp("erapaiva_alku"),
+                        rs.getTimestamp("erapaiva_loppu"),
+                        rs.getDouble("summa")
+                );
+                laskut.add(lasku);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return laskut;
     }
 }

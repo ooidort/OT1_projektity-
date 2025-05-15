@@ -79,4 +79,9 @@ public class LaskuLuokka {
     public Timestamp getErapaiva_loppu() {
         return erapaiva_loppu;
     }
+
+    @Override
+    public String toString() {
+        return "Lasku " + laskuID + " (" + summa + " €)";
+    }
 }

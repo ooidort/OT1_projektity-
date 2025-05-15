@@ -95,6 +95,11 @@ public class AsiakasLuokka {
     public String getSahkoposti() {
         return sahkoposti;
     }
+
+    @Override
+    public String toString() {
+        return nimi;
+    }
 }
 
 
