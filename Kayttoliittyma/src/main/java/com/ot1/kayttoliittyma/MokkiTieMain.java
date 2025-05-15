@@ -26,16 +26,40 @@ public class MokkiTieMain extends Application {
         MokitDAO mokitdao = new MokitDAO();
 
         //Mökin lisääminen
-        MokkiLuokka mokit = new MokkiLuokka(111,
-                "Mökkitie 666",
-                Timestamp.valueOf("2025-05-12 10:00:00"),
-                Timestamp.valueOf("2025-08-12 10:00:00"),
-                127,
-                1);
-                mokitdao.lisaaMokki(mokit);
+        MokkiLuokka mokki1 = new MokkiLuokka(1,
+                "Mökkitie 1",
+                Timestamp.valueOf("1999-31-12 10:00:00"),
+                Timestamp.valueOf("1999-31-12 10:00:00"),
+                80,
+                0);
+                mokitdao.lisaaMokki(mokki1);
+
+        MokkiLuokka mokki2 = new MokkiLuokka(2,
+                "Mökkitie 2",
+                Timestamp.valueOf("1999-31-12 10:00:00"),
+                Timestamp.valueOf("1999-31-12 10:00:00"),
+                120,
+                0);
+        mokitdao.lisaaMokki(mokki2);
+
+        MokkiLuokka mokki3 = new MokkiLuokka(3,
+                "Mökkitie 3",
+                Timestamp.valueOf("1999-31-12 10:00:00"),
+                Timestamp.valueOf("1999-31-12 10:00:00"),
+                140,
+                0);
+        mokitdao.lisaaMokki(mokki3);
+
+        MokkiLuokka mokki4 = new MokkiLuokka(4,
+                "Mökkitie 4",
+                Timestamp.valueOf("1999-31-12 10:00:00"),
+                Timestamp.valueOf("1999-31-12 10:00:00"),
+                1150,
+                0);
+        mokitdao.lisaaMokki(mokki4);
 
         //Mökin hakeminen
-        MokkiLuokka haetttuMokki = mokitdao.getMokki(111);
+        MokkiLuokka haetttuMokki = mokitdao.getMokki(1);
         if (haetttuMokki != null) {
             System.out.println("Hait seuraavan mökin tiedot: " + " " + haetttuMokki.getMokkiID() +
                     haetttuMokki.getOsoite() + " " + haetttuMokki.getHinta());
