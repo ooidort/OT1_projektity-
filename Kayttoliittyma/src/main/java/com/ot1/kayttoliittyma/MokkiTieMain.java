@@ -31,7 +31,7 @@ public class MokkiTieMain extends Application {
                 Timestamp.valueOf("1999-12-31 10:00:00"),
                 Timestamp.valueOf("1999-12-31 10:00:00"),
                 80,
-                0);
+                0, 3, 6);
                 mokitdao.lisaaMokki(mokki1);
 
         MokkiLuokka mokki2 = new MokkiLuokka(2,
@@ -39,7 +39,7 @@ public class MokkiTieMain extends Application {
                 Timestamp.valueOf("1999-12-31 10:00:00"),
                 Timestamp.valueOf("1999-12-31 10:00:00"),
                 120,
-                0);
+                0, 4, 8);
         mokitdao.lisaaMokki(mokki2);
 
         MokkiLuokka mokki3 = new MokkiLuokka(3,
@@ -47,7 +47,7 @@ public class MokkiTieMain extends Application {
                 Timestamp.valueOf("1999-12-31 10:00:00"),
                 Timestamp.valueOf("1999-12-31 10:00:00"),
                 140,
-                0);
+                0, 5, 12);
         mokitdao.lisaaMokki(mokki3);
 
         MokkiLuokka mokki4 = new MokkiLuokka(4,
@@ -55,7 +55,7 @@ public class MokkiTieMain extends Application {
                 Timestamp.valueOf("1999-12-31 10:00:00"),
                 Timestamp.valueOf("1999-12-31 10:00:00"),
                 150,
-                0);
+                0, 7, 16);
         mokitdao.lisaaMokki(mokki4);
     }
 }

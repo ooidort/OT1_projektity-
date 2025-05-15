@@ -17,6 +17,8 @@ public class MokitDAO {
             syote.setTimestamp(4, mokki.getVarauksenLoppu());
             syote.setInt(5, mokki.getHinta());
             syote.setInt(6, mokki.getKayttoaste());
+            syote.setInt(7, mokki.getHuoneet());
+            syote.setInt(8, mokki.getKapasiteetti());
             syote.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -36,12 +38,14 @@ public class MokitDAO {
                         rs.getTimestamp("varauksen_alku"),
                         rs.getTimestamp("varauksen_loppu"),
                         rs.getInt("hinta"),
-                        rs.getInt("kayttoaste")
+                        rs.getInt("kayttoaste"),
+                        rs.getInt("huoneet"),
+                        rs.getInt("kapasiteetti")
                 );
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-    return null;
+        return null;
     }
 }

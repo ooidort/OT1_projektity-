@@ -6,24 +6,24 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllerit.MokkienHallintaUIController">
    <children>
-      <Text layoutX="200.0" layoutY="28.94921875" strokeType="OUTSIDE" strokeWidth="0.0" text="Huoneet" textAlignment="CENTER" wrappingWidth="202.13671875" />
-      <TextArea editable="false" layoutX="200.0" layoutY="32.0" prefHeight="176.0" prefWidth="200.0" />
-      <Text layoutX="199.0" layoutY="232.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Majoituskapasiteetti" textAlignment="CENTER" wrappingWidth="202.13671875" />
-      <TextArea editable="false" layoutX="200.0" layoutY="234.0" prefHeight="200.0" prefWidth="200.0" />
-      <Text layoutX="198.0" layoutY="445.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Muut" textAlignment="CENTER" wrappingWidth="202.13671875" />
-      <TextArea editable="false" layoutX="198.0" layoutY="449.0" prefHeight="215.0" prefWidth="203.0" />
-      <Text layoutX="458.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Käytettävyys" />
-      <TextArea editable="false" layoutX="400.0" layoutY="31.0" prefHeight="542.0" prefWidth="200.0" text="Mökki ei varattavissa:" />
+      <Text layoutX="272.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Huoneet" textAlignment="CENTER" wrappingWidth="202.13671875" />
+      <TextArea fx:id="huoneet" editable="false" layoutX="275.0" layoutY="134.0" prefHeight="57.0" prefWidth="200.0" />
+      <Text layoutX="273.0" layoutY="232.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Majoituskapasiteetti" textAlignment="CENTER" wrappingWidth="202.13671875" />
+      <TextArea fx:id="kapasiteetti" editable="false" layoutX="274.0" layoutY="234.0" prefHeight="48.0" prefWidth="200.0" />
+      <Text layoutX="277.0" layoutY="443.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Muut tiedot" textAlignment="CENTER" wrappingWidth="202.13671875" />
+      <TextArea fx:id="muut" editable="false" layoutX="269.0" layoutY="456.0" prefHeight="98.0" prefWidth="203.0" />
+      <Text layoutX="342.0" layoutY="329.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Käytettävyys" />
+      <TextArea fx:id="kaytettavyys" editable="false" layoutX="208.0" layoutY="333.0" prefHeight="92.0" prefWidth="386.0" text="Mökki ei varattavissa:" wrapText="true" />
       <Button layoutX="442.0" layoutY="607.0" mnemonicParsing="false" onAction="#naytaVaraustiedot" prefHeight="0.0" prefWidth="116.0" text="Näytä varaustiedot" />
       <Text layoutX="669.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Huollon tila" />
-      <TextArea editable="false" layoutX="600.0" layoutY="69.0" prefHeight="150.0" prefWidth="200.0" />
-      <TextArea editable="false" layoutX="599.0" layoutY="241.0" prefHeight="150.0" prefWidth="200.0" />
-      <TextArea editable="false" layoutX="600.0" layoutY="423.0" prefHeight="150.0" prefWidth="200.0" />
+      <TextArea fx:id="shuollot" editable="false" layoutX="600.0" layoutY="69.0" prefHeight="150.0" prefWidth="200.0" />
+      <TextArea fx:id="khuollot" editable="false" layoutX="599.0" layoutY="241.0" prefHeight="150.0" prefWidth="200.0" />
+      <TextArea fx:id="ahuollot" editable="false" layoutX="600.0" layoutY="423.0" prefHeight="150.0" prefWidth="200.0" />
       <Button layoutX="573.0" layoutY="607.0" mnemonicParsing="false" onAction="#lisaaHuolto" text="Lisää huolto" />
       <Button layoutX="671.0" layoutY="607.0" mnemonicParsing="false" onAction="#poistaHuolto" text="Poista huolto" />
       <Button fx:id="kotiButtonM" layoutX="14.0" layoutY="11.0" mnemonicParsing="false" onAction="#kotiButton" text="Koti" />
       <Text layoutX="81.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mökit" wrappingWidth="37.33333333333337" />
-      <ListView accessibleText="Testi" editable="true" layoutY="134.0" prefHeight="530.0" prefWidth="200.0" />
+      <ListView fx:id="mokkiListView" accessibleText="Mökit" editable="true" layoutY="134.0" prefHeight="296.0" prefWidth="200.0" />
       <Text layoutX="647.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Suunnitellut huollot" />
       <Text layoutX="634.0" layoutY="237.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Käynnissä olevat huollot" />
       <Text layoutX="647.0" layoutY="419.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Aikataulutetut huollot" />

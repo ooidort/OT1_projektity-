@@ -10,15 +10,19 @@ public class MokkiLuokka {
     private Timestamp varauksenLoppu;
     private int hinta;
     private int kayttoaste;
+    private int huoneet;
+    private int kapasiteetti;
 
     public MokkiLuokka(int mokkiID, String osoite, Timestamp varauksenAlku, Timestamp varauksenLoppu,
-                       int hinta, int kayttoaste) {
+                       int hinta, int kayttoaste, int huoneet, int kapasiteetti) {
         this.mokkiID = mokkiID;
         this.osoite = osoite;
         this.varauksenAlku = varauksenAlku;
         this.varauksenLoppu = varauksenLoppu;
         this.hinta = hinta;
         this.kayttoaste = kayttoaste;
+        this.huoneet = huoneet;
+        this.kapasiteetti = kapasiteetti;
     }
 
     /**
@@ -69,6 +73,14 @@ public class MokkiLuokka {
         return varauksenLoppu;
     }
 
+    public int getHuoneet() {
+        return huoneet;
+    }
+
+    public int getKapasiteetti() {
+        return kapasiteetti;
+    }
+
     /**
      * Asettaa mökille hinnan
      * @param hinta
@@ -115,5 +127,13 @@ public class MokkiLuokka {
      */
     public void setVarauksenLoppu(Timestamp varauksenLoppu) {
         this.varauksenLoppu = varauksenLoppu;
+    }
+
+    public void setHuoneet(int huoneet) {
+        this.huoneet = huoneet;
+    }
+
+    public void setKapasiteetti(int kapasiteetti) {
+        this.kapasiteetti = kapasiteetti;
     }
 }
