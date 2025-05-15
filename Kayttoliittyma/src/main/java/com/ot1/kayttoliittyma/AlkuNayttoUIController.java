@@ -8,6 +8,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import tietokantahaut.MokitDAO;
+import tietokantahaut.MokkiLuokka;
 
 import javax.security.auth.login.AccountNotFoundException;
 import java.io.BufferedReader;
@@ -26,6 +28,16 @@ public class AlkuNayttoUIController {
     public void mokkienhallintaButton(javafx.event.ActionEvent actionEvent) {
 
         try {
+            MokitDAO mokitdao = new MokitDAO();
+
+            MokkiLuokka haetttuMokki = mokitdao.getMokki(1);
+            if (haetttuMokki != null) {
+                System.out.println("Hait seuraavan mökin tiedot: " + " " + haetttuMokki.getMokkiID() +
+                        haetttuMokki.getOsoite() + " " + haetttuMokki.getHinta());
+            } else {
+                System.out.println("Mökkiä ei löytynyt!");
+            }
+
             System.out.println("Klikkasit mökkienhallintanäppäintä!");
             FXMLLoader fxmlLoader = new
             FXMLLoader(getClass().getResource("/ui/MokkienHallintaUI.fxml"));
