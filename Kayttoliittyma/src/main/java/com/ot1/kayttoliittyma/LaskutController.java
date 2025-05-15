@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.ChoiceBox;
 import javafx.stage.Stage;
@@ -13,6 +14,15 @@ import java.io.IOException;
 import java.time.LocalDate;
 
 public class LaskutController {
+
+    @FXML
+    private Button takaisinButton;
+    @FXML
+    private Button kotiButton;
+    @FXML
+    private Button uusiLaskuButton;
+    @FXML
+    private Button muokkaaLaskujaButton;
 
     public void uusiLaskuButton(javafx.event.ActionEvent actionEvent) {
 
@@ -27,6 +37,9 @@ public class LaskutController {
             uusiIkkuna.setScene(uusiLaskuScene);
             uusiIkkuna.setTitle("Uusi lasku");
             uusiIkkuna.show();
+
+            Stage stage = (Stage) uusiLaskuButton.getScene().getWindow();
+            stage.close();
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -48,6 +61,9 @@ public class LaskutController {
             uusiIkkuna.setTitle("Muokkaa ja poista laskuja");
             uusiIkkuna.show();
 
+            Stage stage = (Stage) muokkaaLaskujaButton.getScene().getWindow();
+            stage.close();
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -68,6 +84,9 @@ public class LaskutController {
             uusiIkkuna.setTitle("Mökkitie");
             uusiIkkuna.show();
 
+            Stage stage = (Stage) kotiButton.getScene().getWindow();
+            stage.close();
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -86,6 +105,9 @@ public class LaskutController {
             uusiIkkuna.setScene(takaisinScene);
             uusiIkkuna.setTitle("Mökkitie");
             uusiIkkuna.show();
+
+            Stage stage = (Stage) takaisinButton.getScene().getWindow();
+            stage.close();
 
         } catch (IOException e) {
             e.printStackTrace();

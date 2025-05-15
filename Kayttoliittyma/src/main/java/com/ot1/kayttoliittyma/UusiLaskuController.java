@@ -4,8 +4,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.stage.Stage;
@@ -14,7 +16,12 @@ import java.io.IOException;
 import java.time.LocalDate;
 
 public class UusiLaskuController {
-
+    @FXML
+    private Button takaisinButton;
+    @FXML
+    private Button kotiButton;
+    @FXML
+    private Button tallennaButton;
     @FXML
     private DatePicker laskuPaivamaaraDatePicker;
     @FXML
@@ -65,6 +72,9 @@ public class UusiLaskuController {
             uusiIkkuna.setTitle("Mökkitie");
             uusiIkkuna.show();
 
+            Stage stage = (Stage) kotiButton.getScene().getWindow();
+            stage.close();
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -75,7 +85,7 @@ public class UusiLaskuController {
 
         try {
             FXMLLoader fxmlLoader = new
-                    FXMLLoader(getClass().getResource("/ui/Alkunaytto.fxml"));
+                    FXMLLoader(getClass().getResource("/ui/laskut.fxml"));
             Parent root = fxmlLoader.load();
 
 
@@ -84,6 +94,9 @@ public class UusiLaskuController {
             uusiIkkuna.setScene(takaisinScene);
             uusiIkkuna.setTitle("Mökkitie");
             uusiIkkuna.show();
+
+            Stage stage = (Stage) takaisinButton.getScene().getWindow();
+            stage.close();
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -132,6 +145,9 @@ public class UusiLaskuController {
     @FXML
     private void handleTallennaBt() {
         //Tallentaa tiedot tietokantaan
+
+        Stage stage = (Stage) tallennaButton.getScene().getWindow();
+        stage.close();
     }
 
 }

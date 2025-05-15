@@ -16,6 +16,14 @@ import java.time.LocalDate;
 
 public class MuokkaaLaskujaController {
     @FXML
+    private Button poistaLaskubt;
+    @FXML
+    private Button kotiButtonM;
+    @FXML
+    private Button takaisinButtonM;
+    @FXML
+    private Button tallennaButtonM;
+    @FXML
     private DatePicker laskuPaivamaaraDatePickerM;
     @FXML
     private DatePicker laskuErapaivaDatePickerM;
@@ -27,8 +35,7 @@ public class MuokkaaLaskujaController {
     private ChoiceBox <String> paivatChoiceBoxM;
     @FXML
     private ChoiceBox <String> loppusiivousChoiceBoxM;
-    @FXML
-    private Button poistaLaskubt;
+
 
     @FXML
     private void initialize() {
@@ -64,6 +71,9 @@ public class MuokkaaLaskujaController {
             uusiIkkuna.setTitle("Mökkitie");
             uusiIkkuna.show();
 
+            Stage stage = (Stage) kotiButtonM.getScene().getWindow();
+            stage.close();
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -74,15 +84,18 @@ public class MuokkaaLaskujaController {
 
         try {
             FXMLLoader fxmlLoader = new
-                    FXMLLoader(getClass().getResource("/ui/Alkunaytto.fxml"));
+                    FXMLLoader(getClass().getResource("/ui/laskut.fxml"));
             Parent root = fxmlLoader.load();
 
 
             Stage uusiIkkuna = new Stage();
             Scene takaisinScene = new Scene(root);
             uusiIkkuna.setScene(takaisinScene);
-            uusiIkkuna.setTitle("Mökkitie");
+            uusiIkkuna.setTitle("Laskujen hallinta");
             uusiIkkuna.show();
+
+            Stage stage = (Stage) takaisinButtonM.getScene().getWindow();
+            stage.close();
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -129,10 +142,16 @@ public class MuokkaaLaskujaController {
     @FXML
     private void handleTallennaBt() {
         //Tallentaa tiedot tietokantaan
+
+        Stage stage = (Stage) tallennaButtonM.getScene().getWindow();
+        stage.close();
     }
     //Poista lasku button toimimaan
     @FXML
     private void handlePoistaLaskuBt() {
         //Poistaa laskun
+
+        Stage stage = (Stage) poistaLaskubt.getScene().getWindow();
+        stage.close();
     }
 }
