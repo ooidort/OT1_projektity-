@@ -39,7 +39,19 @@ CREATE TABLE `huollot`(
 );
 ALTER TABLE
     `huollot` ADD PRIMARY KEY(`HuoltoID`);
-    
+
+CREATE TABLE `varaukset`(
+    `VarausID` INT NOT NULL AUTO_INCREMENT,
+    `MokkiID` INT NOT NULL,
+    `AsiakasID` INT NOT NULL,
+    `varauksen_alku` DATETIME NOT NULL,
+    `varauksen_loppu` DATETIME NOT NULL,
+    `lisatiedot` VARCHAR(255),
+    FOREIGN KEY (`MokkiID`) REFERENCES `mokit` (`MokkiID`),
+    FOREIGN KEY (`AsiakasID`) REFERENCES `asiakas` (`AsiakasID`)
+
+);
+
 ALTER TABLE
     `asiakas` ADD UNIQUE `kayttaja_sahkoposti_unique`(`sahkoposti`);
     
