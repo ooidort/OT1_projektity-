@@ -20,7 +20,7 @@ public class MuokkaaLaskujaController {
     @FXML
     private Button takaisinButtonM;
     @FXML
-    private ChoiceBox valitseAsiakasCB;
+    private ChoiceBox <String> valitseAsiakasCB;
 
 
     @FXML
@@ -99,6 +99,12 @@ public class MuokkaaLaskujaController {
             e.printStackTrace();
         }
 
+    }
+    //Asiakas choiceBox toimimaan
+    @FXML
+    private void handleAsiakasCB() {
+        String valittuAsiakas = valitseAsiakasCB.getValue();
+        System.out.println("Valittu asiakas: " + valittuAsiakas);
     }
 
 

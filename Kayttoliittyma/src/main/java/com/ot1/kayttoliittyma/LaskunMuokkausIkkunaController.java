@@ -78,7 +78,7 @@ public class LaskunMuokkausIkkunaController {
 
         try {
             FXMLLoader fxmlLoader = new
-                    FXMLLoader(getClass().getResource("/ui/laskut.fxml"));
+                    FXMLLoader(getClass().getResource("/ui/MuokkaaJaPoistaLaskuja.fxml"));
             Parent root = fxmlLoader.load();
 
 
