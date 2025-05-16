@@ -3,6 +3,7 @@ package tietokantahaut;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import java.sql.Timestamp;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -68,5 +69,26 @@ public class LaskuDAO {
         }
 
         return laskut;
+    }
+    public void lisaaLasku(Timestamp paivamaara, Timestamp erapaiva, int asiakasID, int mokkiID,
+                           int summa, boolean loppusiivous) {
+        String sql = "INSERT INTO lasku (paivamaara, erapaiva, asiakas_id, mokki_id, summa, loppusiivous) " +
+                "VALUES (?, ?, ?, ?, ?, ?)";
+
+        try (Connection conn = TietokantaYhteys.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setTimestamp(1, paivamaara);
+            stmt.setTimestamp(2, erapaiva);
+            stmt.setInt(3, asiakasID);
+            stmt.setInt(4, mokkiID);
+            stmt.setInt(5, summa);
+            stmt.setBoolean(6, loppusiivous);
+
+            stmt.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

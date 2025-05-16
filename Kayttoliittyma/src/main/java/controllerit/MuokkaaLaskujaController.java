@@ -26,12 +26,12 @@ public class MuokkaaLaskujaController {
     @FXML
     private ChoiceBox <AsiakasLuokka> valitseAsiakasCB;
    @FXML
-   //private ChoiceBox <LaskuLuokka> valitseLaskuCB
-    private ChoiceBox <Integer> valitseLaskuCB;
+    private ChoiceBox <LaskuLuokka> valitseLaskuCB;
+    //private ChoiceBox <Integer> valitseLaskuCB;
 
 
 
-   /** @FXML
+    @FXML
     private void initialize() {
         AsiakasDAO asiakasDAO = new AsiakasDAO();
         ObservableList<AsiakasLuokka> asiakkaat = asiakasDAO.haeKaikkiAsiakkaat();
@@ -46,8 +46,7 @@ public class MuokkaaLaskujaController {
             }
         });
     }
-   **/
-   @FXML
+   /**@FXML
    private void initialize() {
        try {
            LaskuDAO laskudao = new LaskuDAO();
@@ -68,7 +67,7 @@ public class MuokkaaLaskujaController {
            throw new RuntimeException(e);
        }
    }
-
+**/
     //Toiminto koti-buttonille
     public void kotiButton(javafx.event.ActionEvent actionEvent) {
 

@@ -1,5 +1,8 @@
 package tietokantahaut;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 import javax.xml.transform.Result;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -47,5 +50,33 @@ public class MokitDAO {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public ObservableList<MokkiLuokka> haeKaikkiMokit() {
+        ObservableList<MokkiLuokka> mokit = FXCollections.observableArrayList();
+        String sql = "SELECT * FROM mokit";
+
+        try (Connection conn = TietokantaYhteys.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql);
+             ResultSet rs = stmt.executeQuery()) {
+
+            while (rs.next()) {
+                MokkiLuokka mokki = new MokkiLuokka(
+                        rs.getInt("MokkiID"),
+                        rs.getString("osoite"),
+                        rs.getTimestamp("varauksen_alku"),
+                        rs.getTimestamp("varauksen_loppu"),
+                        rs.getInt("hinta"),
+                        rs.getInt("kayttoaste"),
+                        0,
+                        0
+                );
+                mokit.add(mokki);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return mokit;
     }
 }

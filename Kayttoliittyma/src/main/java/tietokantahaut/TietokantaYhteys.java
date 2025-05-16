@@ -10,9 +10,9 @@ public class TietokantaYhteys {
     /**
      * Merkkijonot joita käytetään käyttäjätilin yhdistämiseen mySQL-serveriin
      */
-    private static final String URL = "jdbc:mysql://localhost:3306/mokki";
+    private static final String URL = "jdbc:mysql://127.0.0.1:3306/";
     private static final String kayttaja = "root";
-    private static final String salasana = "67901265"; //67901265
+    private static final String salasana = "testi123"; //67901265
 
     /**
      * Metodi jolla yhdistetään käyttäjä mySQL-serveriin
