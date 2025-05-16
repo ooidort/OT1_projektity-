@@ -82,7 +82,23 @@ public class AlkuNayttoUIController {
     }
 
     public void asiakashallintaButton(ActionEvent actionEvent) {
-        System.out.println("Klikkasit asiakashallintanäppäintä!");
+        try{
+            System.out.println("Klikkasit majoitusvarausnäppäintä!");
+            FXMLLoader fxmlLoader = new FXMLLoader
+                    (getClass().getResource("/ui/AsiakasUI.fxml"));
+            Parent root = fxmlLoader.load();
+            Stage varausIkkuna = new Stage();
+            Scene majoitusVarauksetScene = new Scene(root);
+            varausIkkuna.setTitle("Asiakastiedot");
+            varausIkkuna.setScene(majoitusVarauksetScene);
+            varausIkkuna.show();
+
+            Stage stage = (Stage) asiakasButton.getScene().getWindow();
+            stage.close();
+
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void laskutmetodiButton(ActionEvent actionEvent) {
