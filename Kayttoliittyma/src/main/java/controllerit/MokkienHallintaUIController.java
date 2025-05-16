@@ -12,6 +12,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 import org.w3c.dom.Text;
+import tietokantahaut.HuoltoLuokka;
 import tietokantahaut.MokitDAO;
 import tietokantahaut.MokkiLuokka;
 
@@ -51,6 +52,7 @@ public class MokkienHallintaUIController {
     private ListView mokkiListView;
 
     private Map<String, MokkiLuokka> mokkiMap = new HashMap<>();
+    private Map<String, HuoltoLuokka> huoltoMap = new HashMap<>();
 
     @FXML
     private void initialize() {
@@ -73,16 +75,18 @@ public class MokkienHallintaUIController {
             mokkiListView.getSelectionModel().selectedItemProperty().addListener((observable, vanhaValinta, uusiValinta) -> {
                 if (uusiValinta != null) {
                     MokkiLuokka valittuMokki = mokkiMap.get(uusiValinta);
+                    HuoltoLuokka valittuHuolto = huoltoMap.get(uusiValinta);
                     if (valittuMokki != null) {
                         huoneet.setText("Mökissä on " + String.valueOf(valittuMokki.getHuoneet()) + " huonetta.");
                         kapasiteetti.setText("Mökkiin mahtuu " + String.valueOf(valittuMokki.getKapasiteetti()) + " henkilöä");
                         muut.setText("Ei muita tietoja");
                         kaytettavyys.setText("Mökki on varattu aikavälille " +
                                 String.valueOf(valittuMokki.getVarauksenAlku()) + " - " + String.valueOf(valittuMokki.getVarauksenLoppu()));
+                        shuollot.setText("Mökin suunnitellut huollot ovat: " + String.valueOf(valittuHuolto.getKohteet()));
+                        ahuollot.setText("Mökin aikaisemmat huollot: " + String.valueOf(valittuHuolto.getHistoria()));
                     }
                 }
             });
-
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -174,4 +178,5 @@ public class MokkienHallintaUIController {
             e.printStackTrace();
         }
     }
+
 }
