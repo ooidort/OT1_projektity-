@@ -1,6 +1,7 @@
 package tietokantahaut;
 
 import java.sql.Timestamp;
+import java.time.LocalDate;
 
 public class HuoltoLuokka {
 
@@ -11,7 +12,7 @@ public class HuoltoLuokka {
     private Timestamp alkupaiva;
     private Timestamp loppupaiva;
 
-    HuoltoLuokka(int huoltoID, int mokkiID, String historia, String kohteet, Timestamp alkupaiva, Timestamp loppupaiva) {
+    public HuoltoLuokka(int mokkiID, int huoltoID, String kohteet, String historia, Timestamp alkupaiva, Timestamp loppupaiva) {
         this.huoltoID = huoltoID;
         this.mokkiID = mokkiID;
         this.historia = historia;

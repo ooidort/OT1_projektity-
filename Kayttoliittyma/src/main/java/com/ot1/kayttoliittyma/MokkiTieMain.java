@@ -22,6 +22,8 @@ public class MokkiTieMain extends Application {
 
     public static void main(String[] args) {
         launch(args);
+
+        /*
         MokitDAO mokitdao = new MokitDAO();
 
         //Mökin lisääminen
@@ -74,5 +76,5 @@ public class MokkiTieMain extends Application {
             e.printStackTrace();
             System.out.println("Varauksen lisäämisessä tapahtui virhe.");
         }
-    }
+*/    }
 }

@@ -12,12 +12,15 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 import org.w3c.dom.Text;
+import tietokantahaut.HuoltoDAO;
 import tietokantahaut.HuoltoLuokka;
 import tietokantahaut.MokitDAO;
 import tietokantahaut.MokkiLuokka;
 
 import java.io.IOException;
 import java.lang.reflect.Array;
+import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -58,6 +61,7 @@ public class MokkienHallintaUIController {
     private void initialize() {
         try {
             MokitDAO mokitdao = new MokitDAO();
+            HuoltoDAO huoltodao = new HuoltoDAO();
             ObservableList<String> mokkiLista = FXCollections.observableArrayList();
 
             for (int i = 1; i <= 4; i++) {
@@ -70,20 +74,27 @@ public class MokkienHallintaUIController {
                     System.out.println("Mökkejä ei löytynyt!");
                 }
             }
+
             mokkiListView.setItems(mokkiLista);
 
             mokkiListView.getSelectionModel().selectedItemProperty().addListener((observable, vanhaValinta, uusiValinta) -> {
+
                 if (uusiValinta != null) {
                     MokkiLuokka valittuMokki = mokkiMap.get(uusiValinta);
-                    HuoltoLuokka valittuHuolto = huoltoMap.get(uusiValinta);
+
                     if (valittuMokki != null) {
+                        int mokkiID = valittuMokki.getMokkiID();;
+                        HuoltoLuokka valittuHuolto = huoltodao.haeHuoltoMokkiID(mokkiID);
                         huoneet.setText("Mökissä on " + String.valueOf(valittuMokki.getHuoneet()) + " huonetta.");
                         kapasiteetti.setText("Mökkiin mahtuu " + String.valueOf(valittuMokki.getKapasiteetti()) + " henkilöä");
                         muut.setText("Ei muita tietoja");
                         kaytettavyys.setText("Mökki on varattu aikavälille " +
                                 String.valueOf(valittuMokki.getVarauksenAlku()) + " - " + String.valueOf(valittuMokki.getVarauksenLoppu()));
-                        shuollot.setText("Mökin suunnitellut huollot ovat: " + String.valueOf(valittuHuolto.getKohteet()));
-                        ahuollot.setText("Mökin aikaisemmat huollot: " + String.valueOf(valittuHuolto.getHistoria()));
+                        if (valittuHuolto != null) {
+                            shuollot.setText("Mökin seuraavat huollot ovat: " + valittuHuolto.getKohteet());
+                        } else {
+                            shuollot.setText("Mökillä ei huoltoja.");
+                        }
                     }
                 }
             });

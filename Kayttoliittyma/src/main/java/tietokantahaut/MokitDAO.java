@@ -11,7 +11,7 @@ import java.sql.SQLException;
 
 public class MokitDAO {
     public void lisaaMokki(MokkiLuokka mokki) {
-        String sql = "INSERT INTO mokit (MokkiID, osoite, varauksen_alku, varauksen_loppu, hinta, kayttoaste) VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO mokit (MokkiID, osoite, varauksen_alku, varauksen_loppu, hinta, kayttoaste, huoneet, kapasiteetti) VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
         try (Connection yhteys = TietokantaYhteys.getConnection();
              PreparedStatement syote = yhteys.prepareStatement(sql)) {
             syote.setInt(1, mokki.getMokkiID());
@@ -29,7 +29,7 @@ public class MokitDAO {
     }
 
     public MokkiLuokka getMokki(int mokkiID) {
-        String sql = "SELECT * FROM mokit WHERE MokkiID = ?";
+        String sql = "SELECT * FROM mokit WHERE MokkiID = ?;";
         try (Connection conn = TietokantaYhteys.getConnection();
              PreparedStatement syote = conn.prepareStatement(sql)) {
             syote.setInt(1, mokkiID);

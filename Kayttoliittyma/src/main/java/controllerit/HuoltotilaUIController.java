@@ -9,12 +9,17 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 import tietokantahaut.HuoltoDAO;
+import tietokantahaut.HuoltoLuokka;
 import tietokantahaut.MokitDAO;
 import tietokantahaut.MokkiLuokka;
 
+import java.awt.event.ActionEvent;
+import java.beans.EventHandler;
 import java.io.IOException;
+import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
@@ -25,7 +30,7 @@ public class HuoltotilaUIController {
     @FXML
     private Button takaisinButtonM;
     @FXML
-    private Button lisaaHuolto;
+    private Button lisaaHuoltoButton;
     @FXML
     private ChoiceBox mokkiValinta;
     @FXML
@@ -33,8 +38,23 @@ public class HuoltotilaUIController {
     @FXML
     private DatePicker huoltoErapaivaDatePicker;
     @FXML
+    private TextArea huollonTiedot;
 
     private Map<String, MokkiLuokka> mokkiMap = new HashMap<>();
+
+    //Päivämäärä datepicker toimimaan
+    @FXML
+    private void handleAloitusPaiva() {
+        LocalDate aloitusPaiva = huoltoPaivamaaraDatePicker.getValue();
+        System.out.println("Aloituspäivä: " + aloitusPaiva);
+    }
+
+    //Eräpäivä datepicker toimimaan
+    @FXML
+    private void handleEraPaiva() {
+        LocalDate eraPaiva = huoltoErapaivaDatePicker.getValue();
+        System.out.println("Eräpäivä: " + eraPaiva);
+    }
 
     @FXML
     private void initialize() {
@@ -58,9 +78,51 @@ public class HuoltotilaUIController {
         }
     }
 
-    public void lisaaHuolto(javafx.event.ActionEvent actionEvent) {
-        HuoltoDAO huoltodao = new HuoltoDAO();
 
+    public void huollonTiedot(javafx.event.ActionEvent actionEvent) {
+        HuoltoDAO huoltodao = new HuoltoDAO();
+    }
+
+    public void tallennaHuolto(javafx.event.ActionEvent actionEvent) {
+        try {
+            String valittuOsoite = (String) mokkiValinta.getValue();
+
+                    if (mokkiValinta != null && mokkiMap.containsKey(valittuOsoite)) {
+                        System.out.println("Painoit tallenna nappia!");
+
+                        MokkiLuokka valittuMokki = mokkiMap.get(valittuOsoite);
+                        int mokkiID = valittuMokki.getMokkiID();
+
+                        HuoltoDAO huoltodao = new HuoltoDAO();
+                        HuoltoLuokka uusiHuolto = new HuoltoLuokka(0,
+                                0,
+                                "null",
+                                "null",
+                                Timestamp.valueOf("1999-12-31 10:00:00"),
+                                Timestamp.valueOf("1999-12-31 10:00:00"));
+                        uusiHuolto.setMokkiID(valittuMokki.getMokkiID());
+                        uusiHuolto.setKohteet(huollonTiedot.getText());
+                        uusiHuolto.setAlkupaiva(Timestamp.valueOf(huoltoPaivamaaraDatePicker.getValue().atStartOfDay()));
+                        uusiHuolto.setLoppupaiva(Timestamp.valueOf(huoltoErapaivaDatePicker.getValue().atStartOfDay()));
+
+                        int huoltoID = huoltodao.lisaaHuolto(uusiHuolto);
+                        HuoltoLuokka tallennettu = huoltodao.getHuolto(huoltoID);
+                        if (tallennettu != null) {
+                            System.out.println("Tietokannasta haettu huolto: " + tallennettu.getKohteet());
+                        } else {
+                            System.out.println("Eeeeeepä löytynyt!");
+                        }
+
+                        System.out.println("Tallensit seuraavat tiedot: " + "HuoltoID: " + huoltoID
+                        + ", MökkiID: " + mokkiID + ", Kohteet: " + uusiHuolto.getKohteet() +
+                                ", Historia: " + uusiHuolto.getHistoria() + ", Alkupäivä: " +
+                                uusiHuolto.getAlkupaiva() + ", Loppupäivä: " + uusiHuolto.getLoppupaiva());
+                    } else {
+                        System.out.println("Valitse mökki ennen tallennusta!");
+                }
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
     }
 
     //Toiminto koti-buttonille
@@ -108,18 +170,5 @@ public class HuoltotilaUIController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-    //Päivämäärä datepicker toimimaan
-    @FXML
-    private void handleAloitusPaiva() {
-        LocalDate aloitusPaiva = huoltoPaivamaaraDatePicker.getValue();
-        System.out.println("Aloituspäivä: " + aloitusPaiva);
-    }
-
-    //Eräpäivä datepicker toimimaan
-    @FXML
-    private void handleEraPaiva() {
-        LocalDate eraPaiva = huoltoErapaivaDatePicker.getValue();
-        System.out.println("Eräpäivä: " + eraPaiva);
     }
 }
