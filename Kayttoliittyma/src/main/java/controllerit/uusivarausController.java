@@ -1,5 +1,7 @@
 package controllerit;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,9 +11,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import tietokantahaut.MajoitusvarausLuokka;
+import tietokantahaut.VarausDAO;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
+import java.time.LocalDateTime;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -23,16 +29,12 @@ public class uusivarausController implements Initializable {
     private DatePicker alkupaivaDate;
 
     @FXML
-    private TextField asiakasField;
+    private ChoiceBox<String> asiakasChoiceBox;
+    private String[] asiakkaat = {"Asiakas 1", "Asiakas 2", "Asiakas 3", "Asiakas 4"};
+
 
     @FXML
     private Label asiakasLabel;
-
-    @FXML
-    private TextField lisatietoField;
-
-    @FXML
-    private Label lisatietoLabel;
 
     @FXML
     private Label loppuPaivaLabel;
@@ -67,10 +69,7 @@ public class uusivarausController implements Initializable {
 
     @FXML
     public void tyhjennakentat(){
-        // tekstikenttien tyhjennys
-        asiakasField.clear();
-        lisatietoField.clear();
-
+        asiakasChoiceBox.setValue(null);
         // choicebox palautus oletusarvoon
         uusivarausChoice.setValue(null);
 
@@ -78,6 +77,7 @@ public class uusivarausController implements Initializable {
         alkupaivaDate.setValue(null);
         loppupaivaDate.setValue(null);
     }
+
 
     @FXML
     void peruutaMuutokset(ActionEvent event) {
@@ -125,8 +125,8 @@ public class uusivarausController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
 
+    }
     @FXML
     void tallennaVaraus(ActionEvent event) {
         Alert tallennaVaraus = new Alert(Alert.AlertType.CONFIRMATION);
@@ -139,11 +139,31 @@ public class uusivarausController implements Initializable {
         tallennaVaraus.getButtonTypes().setAll(kyllaBt, eiBt);
 
         Optional<ButtonType> result = tallennaVaraus.showAndWait();
-        if (result.isPresent() && result.get() == kyllaBt){
-            System.out.println("Varaus on tallennettu!");
-            // lisää poiston logiikka tietokantaan
+        if (result.isPresent() && result.get() == kyllaBt) { // jos käyttäjä valitsee Kyllä
+            try {
+                String asiakasString = asiakasChoiceBox.getValue();
+                int asiakasID = haeAsiakasID(asiakasString);
+                String mokkiNimi = uusivarausChoice.getValue();
+                int mokkiID = haeMokkiID(mokkiNimi); // tee tälle metodi!!
+                LocalDateTime alkupv = alkupaivaDate.getValue().atStartOfDay();
+                LocalDateTime loppupv = loppupaivaDate.getValue().atStartOfDay();
+
+
+                // luodaan varausolio
+                MajoitusvarausLuokka varaus = new MajoitusvarausLuokka(mokkiID, asiakasID, alkupv, loppupv,0);
+
+                // tallennus tietokantaan
+                VarausDAO tallennus = new VarausDAO();
+                tallennus.lisaaVaraus(varaus);
+
+            } catch (SQLException e) { // virheen sattuessa ilmoitus, mikäli varauksen tallennus ei onnistunut
+                e.printStackTrace();
+                Alert virhetallennuksessa = new Alert(Alert.AlertType.ERROR, "Varauksen tallennus epäonnistui:"
+                + e.getMessage());
+                virhetallennuksessa.showAndWait();
+            }
         } else {
-            System.out.println("Tapahtuma peruttu.");
+            System.out.println("Tapahtuma peruutettu.");
         }
     }
     @Override
@@ -153,10 +173,28 @@ public class uusivarausController implements Initializable {
         uusivarausChoice.getItems().addAll(mokit);
 
         // asiakas textfieldi
-        asiakasField.setText("Etunimi Sukunimi");
+        asiakasChoiceBox.setValue("Asiakas 1");
+        asiakasChoiceBox.getItems().addAll(asiakkaat);
 
         // kalenterien prompt-tekstit
         alkupaivaDate.setPromptText("PV/KK/VUOSI");
         loppupaivaDate.setPromptText("PV/KK/VUOSI");
+    }
+    // metodi, joka muuttaa mökin nimen numeroksi (ID)
+    private int haeMokkiID(String mokkiNimi) {
+        switch (mokkiNimi) {
+            case "Mökki 1": return 1;
+            case "Mökki 2": return 2;
+            case "Mökki 3": return 3;
+            case "Mökki 4": return 4;
+                default: return 0;
+        }
+    }
+    private int haeAsiakasID(String asiakasString) {
+        try {
+            return Integer.parseInt(asiakasString.replaceAll("\\D+", ""));
+        } catch (NumberFormatException e) {
+            return -1;
+        }
     }
 }

@@ -17,15 +17,13 @@
                 <Label fx:id="mokkiLabel" prefHeight="17.0" prefWidth="167.0" text="Mökki:" />
                 <ChoiceBox fx:id="uusivarausChoice" prefWidth="150.0" />
                 <Label fx:id="asiakasLabel" prefHeight="17.0" prefWidth="167.0" text="Asiakas:" />
-                <TextField fx:id="asiakasField" text="asiakkaan nimi" />
+                <ChoiceBox fx:id="asiakasChoiceBox" prefWidth="150.0" />
                 <Label fx:id="alkuPaivaLabel" prefHeight="17.0" prefWidth="167.0" text="Alkupäivä:" />
                 <DatePicker fx:id="alkupaivaDate" />
                 <Label fx:id="loppuPaivaLabel" prefHeight="17.0" prefWidth="167.0" text="Loppupäivä:" />
                 <DatePicker fx:id="loppupaivaDate" />
-                <Label fx:id="lisatietoLabel" prefHeight="17.0" prefWidth="167.0" text="Lisätietoja:" />
-                <TextField fx:id="lisatietoField" text="Puhelinnumero" />
                 <Button fx:id="tallennavarausBt" mnemonicParsing="false" onAction="#tallennaVaraus" text="Tallenna varaus" />
-                <Button fx:id="peruutaBt" mnemonicParsing="false" onAction="#peruutaMuutokset" text="Peruuta" />
+                <Button fx:id="peruutaBt" mnemonicParsing="false" onAction="#peruutaMuutokset" text="Tyhjennä" />
                 <Button fx:id="kotiButton" text="Takaisin kotiin" onAction="#kotiButton"/>
                 <Button fx:id="takaisinButton" text="Edellinen näkymä" onAction="#takaisinButton"/>
             </children>

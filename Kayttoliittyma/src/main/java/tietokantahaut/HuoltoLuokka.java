@@ -1,15 +1,23 @@
 package tietokantahaut;
 
+import java.sql.Timestamp;
+
 public class HuoltoLuokka {
 
     private int huoltoID;
+    private int mokkiID;
     private String historia;
     private String kohteet;
+    private Timestamp alkupaiva;
+    private Timestamp loppupaiva;
 
-    HuoltoLuokka(int huoltoID, String historia, String kohteet) {
+    HuoltoLuokka(int huoltoID, int mokkiID, String historia, String kohteet, Timestamp alkupaiva, Timestamp loppupaiva) {
         this.huoltoID = huoltoID;
+        this.mokkiID = mokkiID;
         this.historia = historia;
         this.kohteet = kohteet;
+        this.alkupaiva = alkupaiva;
+        this.loppupaiva = loppupaiva;
     }
 
     /**
@@ -18,6 +26,18 @@ public class HuoltoLuokka {
      */
     public void setHistoria(String historia) {
         this.historia = historia;
+    }
+
+    public void setMokkiID(int mokkiID) {
+        this.mokkiID = mokkiID;
+    }
+
+    public void setAlkupaiva(Timestamp alkupaiva) {
+        this.alkupaiva = alkupaiva;
+    }
+
+    public void setLoppupaiva(Timestamp loppupaiva) {
+        this.loppupaiva = loppupaiva;
     }
 
     /**
@@ -44,12 +64,24 @@ public class HuoltoLuokka {
         return huoltoID;
     }
 
+    public int getMokkiID() {
+        return mokkiID;
+    }
+
     /**
      * Hakee huoltohistorian
      * @return
      */
     public String getHistoria() {
         return historia;
+    }
+
+    public Timestamp getAlkupaiva() {
+        return alkupaiva;
+    }
+
+    public Timestamp getLoppupaiva() {
+        return loppupaiva;
     }
 
     /**

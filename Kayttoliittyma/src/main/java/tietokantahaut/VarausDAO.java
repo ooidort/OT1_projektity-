@@ -33,7 +33,7 @@ public class VarausDAO {
      */
     public List<MajoitusvarausLuokka> haeKaikkiVaraukset(){
         List<MajoitusvarausLuokka> varaukset = new ArrayList<>();
-        String sql = "SELECT FROM varaukset";
+        String sql = "SELECT * FROM varaukset";
         try (Connection yhteys = TietokantaYhteys.getConnection();
              PreparedStatement syote = yhteys.prepareStatement(sql);
              ResultSet tulokset = syote.executeQuery()) {
@@ -50,8 +50,8 @@ public class VarausDAO {
                         asiakasID,
                         alku.toLocalDateTime(),
                         loppu.toLocalDateTime(),
-                        0,                // Hinta ei ole varaukset-taulussa
-                        ""               // Lisätiedot ei ole varaukset-taulussa
+                        0                // Hinta ei ole varaukset-taulussa
+
                 );
                 varaukset.add(varaus);
 

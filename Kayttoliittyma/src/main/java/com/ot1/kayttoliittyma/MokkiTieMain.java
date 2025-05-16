@@ -5,11 +5,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import tietokantahaut.MokitDAO;
-import tietokantahaut.MokkiLuokka;
-import tietokantahaut.TietokantaYhteys;
+import tietokantahaut.*;
 
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 public class MokkiTieMain extends Application {
 
@@ -32,7 +31,7 @@ public class MokkiTieMain extends Application {
                 Timestamp.valueOf("1999-12-31 10:00:00"),
                 80,
                 0, 3, 6);
-                mokitdao.lisaaMokki(mokki1);
+        mokitdao.lisaaMokki(mokki1);
 
         MokkiLuokka mokki2 = new MokkiLuokka(2,
                 "Mökkitie 2",
@@ -57,5 +56,23 @@ public class MokkiTieMain extends Application {
                 150,
                 0, 7, 16);
         mokitdao.lisaaMokki(mokki4);
+
+
+        VarausDAO vdao = new VarausDAO();
+        // testi varauksille
+        MajoitusvarausLuokka varaustesti = new MajoitusvarausLuokka(
+                2, 1,
+                LocalDateTime.of(2025, 3, 1, 0, 0),
+                LocalDateTime.of(2025, 3, 5, 0, 0),
+                0
+        );
+        try{
+            vdao.lisaaVaraus(varaustesti);
+            System.out.println("Varauksen lisääminen onnistui.");
+
+        }catch(Exception e){
+            e.printStackTrace();
+            System.out.println("Varauksen lisäämisessä tapahtui virhe.");
+        }
     }
 }
