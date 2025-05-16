@@ -6,19 +6,22 @@ DROP DATABASE IF EXISTS mokki;
 CREATE DATABASE mokki CHARACTER SET utf8mb4;
 USE mokki;
 
+
 -- Create the 'mokit' table
 CREATE TABLE mokit (
-    MokkiID INT PRIMARY KEY,
+    MokkiID INT AUTO_INCREMENT PRIMARY KEY,
     osoite VARCHAR(255) NOT NULL,
     varauksen_alku DATETIME NOT NULL,
     varauksen_loppu DATETIME NOT NULL,
     hinta INT NOT NULL,
-    kayttoaste INT NOT NULL
+    kayttoaste INT NOT NULL,
+    huoneet INT NOT NULL,
+    kapasiteetti INT NOT NULL
 );
 
 -- Create the 'asiakas' table
 CREATE TABLE asiakas (
-    AsiakasID INT PRIMARY KEY,
+    AsiakasID INT AUTO_INCREMENT PRIMARY KEY,
     nimi VARCHAR(255) NOT NULL,
     sahkoposti VARCHAR(255) NOT NULL UNIQUE,
     osoite VARCHAR(255) NOT NULL,
@@ -27,7 +30,7 @@ CREATE TABLE asiakas (
 
 -- Create the 'laskut' table
 CREATE TABLE laskut (
-    LaskuID INT PRIMARY KEY,
+    LaskuID INT AUTO_INCREMENT PRIMARY KEY,
     erapaiva_alku DATETIME NOT NULL,
     erapaiva_loppu DATETIME NOT NULL,
     summa INT NOT NULL
@@ -35,14 +38,18 @@ CREATE TABLE laskut (
 
 -- Create the 'huollot' table
 CREATE TABLE huollot (
-    HuoltoID INT PRIMARY KEY,
+    HuoltoID INT AUTO_INCREMENT PRIMARY KEY,
+    MokkiID INT,
     historia VARCHAR(255) NOT NULL,
-    kohteet VARCHAR(255) NOT NULL
+    kohteet VARCHAR(255) NOT NULL,
+    alkupaiva DATETIME NOT NULL,
+    loppupaiva DATETIME NOT NULL,
+    FOREIGN KEY (MokkiID) REFERENCES mokit(MokkiID)
 );
 
 -- Create the 'varaukset' table to link customers and cabins
 CREATE TABLE varaukset (
-    VarausID INT PRIMARY KEY,
+    VarausID INT AUTO_INCREMENT PRIMARY KEY,
     AsiakasID INT,
     MokkiID INT,
     varauksen_alku DATETIME,
@@ -52,11 +59,11 @@ CREATE TABLE varaukset (
 );
 
 -- Example inserts for 'mokit' table
-INSERT INTO mokit (MokkiID, osoite, varauksen_alku, varauksen_loppu, hinta, kayttoaste) VALUES
-(1, 'Mökkitie 1', '1999-12-31 10:00:00', '1999-12-31 10:00:00', 80, 0),
-(2, 'Mökkitie 2', '1999-12-31 10:00:00', '1999-12-31 10:00:00', 120, 0),
-(3, 'Mökkitie 3', '1999-12-31 10:00:00', '1999-12-31 10:00:00', 140, 0),
-(4, 'Mökkitie 4', '1999-12-31 10:00:00', '1999-12-31 10:00:00', 1150, 0);
+INSERT INTO mokit (MokkiID, osoite, varauksen_alku, varauksen_loppu, hinta, kayttoaste, huoneet, kapasiteetti) VALUES
+(1, 'Mökkitie 1', '1999-12-31 10:00:00', '1999-12-31 10:00:00', 80, 0, 3, 6),
+(2, 'Mökkitie 2', '1999-12-31 10:00:00', '1999-12-31 10:00:00', 120, 0, 4, 8),
+(3, 'Mökkitie 3', '1999-12-31 10:00:00', '1999-12-31 10:00:00', 140, 0, 5, 12),
+(4, 'Mökkitie 4', '1999-12-31 10:00:00', '1999-12-31 10:00:00', 180, 0, 7, 16);
 
 -- Example inserts for 'asiakas' table
 INSERT INTO asiakas (AsiakasID, nimi, sahkoposti, osoite, puhelinnumero) VALUES
@@ -73,11 +80,11 @@ INSERT INTO laskut (LaskuID, erapaiva_alku, erapaiva_loppu, summa) VALUES
 (4, '2023-04-01 00:00:00', '2023-04-30 23:59:59', 400);
 
 -- Example inserts for 'huollot' table
-INSERT INTO huollot (HuoltoID, historia, kohteet) VALUES
-(1, 'Huoltohistoria 1', 'Kohde 1'),
-(2, 'Huoltohistoria 2', 'Kohde 2'),
-(3, 'Huoltohistoria 3', 'Kohde 3'),
-(4, 'Huoltohistoria 4', 'Kohde 4');
+INSERT INTO huollot (HuoltoID, MokkiID, historia, kohteet, alkupaiva, loppupaiva) VALUES
+(1, 1, 'Huoltohistoria 1', 'Kohde 1', '2023-05-01 00:00:00', '2023-05-07 23:59:59'),
+(2, 2, 'Huoltohistoria 2', 'Kohde 2', '2023-05-01 00:00:00', '2023-05-07 23:59:59'),
+(3, 3, 'Huoltohistoria 3', 'Kohde 3', '2023-05-01 00:00:00', '2023-05-07 23:59:59'),
+(4, 4, 'Huoltohistoria 4', 'Kohde 4', '2023-05-01 00:00:00', '2023-05-07 23:59:59');
 
 -- Example inserts for 'varaukset' table
 INSERT INTO varaukset (VarausID, AsiakasID, MokkiID, varauksen_alku, varauksen_loppu) VALUES
